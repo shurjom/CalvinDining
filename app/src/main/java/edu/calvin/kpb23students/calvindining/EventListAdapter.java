@@ -30,11 +30,13 @@ import java.util.ListIterator;
 public class EventListAdapter extends BaseAdapter {
     static class Event {
         public final String name;
+        public final String description;
         public final GregorianCalendar beginTime;
         public final GregorianCalendar endTime;
 
-        public Event(String name, GregorianCalendar beginTime, GregorianCalendar endTime) {
+        public Event(String name, String description, GregorianCalendar beginTime, GregorianCalendar endTime) {
             this.name = name;
+            this.description = description;
             this.beginTime = beginTime;
             this.endTime = endTime;
         }
@@ -50,7 +52,6 @@ public class EventListAdapter extends BaseAdapter {
             this.endTime = endTime;
             this.event = event;
         }
-
         public void setDuration(String duration) {
             this.duration = duration;
         }
@@ -76,21 +77,7 @@ public class EventListAdapter extends BaseAdapter {
                 displayItems.clear();
                 Log.d("X", "run: setevents " + events.length);
                 if (events.length > 0) {
-                    // Sort events by end time ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                    Arrays.sort(events, new Comparator<Event>() {
-                        @Override
-                        public int compare(Event o1, Event o2) {
-                            return o1.endTime.compareTo(o2.endTime);
-                        }
-                    });
-                    // Store latest end time into variable
-                    int endHour = events[events.length - 1].endTime.get(Calendar.HOUR_OF_DAY);
-                    // Set endHour to be the latest hour + 1 hour
-                    endHour = Math.min(23, endHour + 1); // TODO fix if latest thing in schedule goes to 11pm or 23HH because hour 24 isn't allowed
-
                     // Sort events by start time -------------------------------------------------------------------------------
-                    Log.d("X", "endHour comes from " + events[events.length - 1].name + " and is " + endHour);
-                    // Sort events by begin time
                     Arrays.sort(events, new Comparator<Event>() {
                         @Override
                         public int compare(Event o1, Event o2) {
@@ -98,41 +85,12 @@ public class EventListAdapter extends BaseAdapter {
                         }
                     });
                     int startHour = events[0].beginTime.get(Calendar.HOUR_OF_DAY);
-                    // Set startHour to be first hour - 1 hour
-                    startHour = Math.max(0, startHour - 1);
 
                     // Set displayItems
                     DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(context);
-                    Log.d("X", "startHour comes from " + events[0].name + " and is " + startHour);
-
-
-                    // GregorianCalendar formattingCalendar = (GregorianCalendar) events[0].beginTime.clone();
-                    //for (int fieldId = Calendar.MINUTE; fieldId <= Calendar.MILLISECOND; fieldId++) {
-                    //    formattingCalendar.set(fieldId, 0);
-                    //}
-                    Log.v("X", "startHour = " + startHour + ", endHour = " + endHour);
 
                     // TODO Make this better. It looks terrible right now
                     // Version that does it per hour
-                    /*
-                    for (int i = startHour; i < endHour; i++) {
-                        Log.v("X", "Running for loop");
-                        Event displayEvent = null;
-
-                        // Check to see if each hour is in the event.
-                        for (Event event : events) {
-                            if (event.beginTime.get(Calendar.HOUR_OF_DAY) <= i && i <= event.endTime.get(Calendar.HOUR_OF_DAY)) {
-                                displayEvent = event;
-                            }
-                        }
-                        formattingCalendar.set(Calendar.HOUR_OF_DAY, i);
-                        DisplayItem displayItem = new DisplayItem(
-                                timeFormat.format(formattingCalendar.getTime()), // startTime
-                                timeFormat.format(formattingCalendar.getTime()), // endTime
-                                displayEvent); // event
-
-                        displayItems.add(displayItem);
-                    }*/
                     // Add events that are empty so it can fill in the gaps this assumes events don't overlap.
                     // TODO what if events overlap? oh no
                     GregorianCalendar beginOverlap = (GregorianCalendar) events[0].beginTime.clone();
@@ -143,9 +101,10 @@ public class EventListAdapter extends BaseAdapter {
                     for (Event event: events) {
                         endOverlap = event.beginTime;
                         // Make time between events
+                        // TODO make this not use DisplayItem
                         DisplayItem betweenEvents = new DisplayItem(
-                                timeFormat.format(beginOverlap.getTime()),
-                                timeFormat.format(endOverlap.getTime()),
+                                null,
+                                null,
                                 null
                         );
                         beginOverlap = event.endTime;
@@ -185,15 +144,20 @@ public class EventListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.v("X", "Changing text " + String.valueOf(position));
-        TimeLabel tl = (TimeLabel)layoutInflater.inflate(R.layout.time_label, parent, false);
+
         DisplayItem displayItem = this.displayItems.get(position);
 
         // TODO use something better than an if else
         if (displayItem.event != null) {
-            tl.set(true, displayItem.event.name, displayItem.beginTime, displayItem.endTime);
+            // If event
+            TimeLabel timeLabel = (TimeLabel)layoutInflater.inflate(R.layout.time_label, parent, false);
+            timeLabel.set(true, displayItem.event.name, displayItem.beginTime, displayItem.endTime, displayItem.event.description);
+            return timeLabel;
         } else {
-            tl.set(false, displayItem.duration, displayItem.beginTime, displayItem.endTime);
+            // BetweenEvents
+            TimeLabelBetween timeLabelBetween = (TimeLabelBetween) layoutInflater.inflate(R.layout.time_label_between, parent, false);
+            timeLabelBetween.set(false, displayItem.duration);
+            return timeLabelBetween;
         }
-        return tl;
     }
 }
