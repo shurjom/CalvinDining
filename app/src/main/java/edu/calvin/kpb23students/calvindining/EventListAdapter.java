@@ -98,16 +98,15 @@ public class EventListAdapter extends BaseAdapter {
                     beginOverlap.set(Calendar.MINUTE, 0);
                     GregorianCalendar endOverlap;
 
+                    // TODO make this not use DisplayItem
+                    DisplayItem betweenEvents = new DisplayItem(
+                            null,
+                            null,
+                            null
+                    );
+
                     for (Event event: events) {
-                        endOverlap = event.beginTime;
                         // Make time between events
-                        // TODO make this not use DisplayItem
-                        DisplayItem betweenEvents = new DisplayItem(
-                                null,
-                                null,
-                                null
-                        );
-                        beginOverlap = event.endTime;
                         betweenEvents.setDuration("DURATION"); // TODO duration
 
                         // Make event display item
@@ -119,6 +118,8 @@ public class EventListAdapter extends BaseAdapter {
                         displayItems.add(betweenEvents);
                         displayItems.add(displayItem);
                     }
+                    betweenEvents.setDuration("DURATION");
+                    displayItems.add(betweenEvents);
                 }
                 notifyDataSetChanged(); // rerun getView to notice new changes
             }

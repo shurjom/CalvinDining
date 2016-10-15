@@ -40,7 +40,7 @@ public class TimeLabelBetween extends RelativeLayout{
         // Get theme
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = getContext().getTheme();
-        theme.resolveAttribute(android.R.attr.colorBackground, typedValue, true);
+        theme.resolveAttribute(android.R.attr.colorPrimaryDark, typedValue, true);
         int color = typedValue.data;
 
         // TODO make own color for this http://stackoverflow.com/a/30905173/2948122
