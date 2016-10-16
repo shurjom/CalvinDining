@@ -5,6 +5,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
@@ -21,9 +24,11 @@ import android.widget.ListView;
 
 import java.util.GregorianCalendar;
 
+import edu.calvin.kpb23students.calvindining.fragments.Calendar;
+import edu.calvin.kpb23students.calvindining.fragments.DailyView;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,24 +44,19 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_daily_view); // set nav daily view to be selected on startup
         navigationView.setNavigationItemSelectedListener(this);
 
-        // Added stuffs
-        Log.v("X", "hi there !");
+        // Start with daily view opened
+        openFragment(new DailyView());
+    }
 
-        // Make EventList
-        EventListAdapter timesEventAdapter = new EventListAdapter(getApplicationContext(), getLayoutInflater());
-        ((ListView)findViewById(R.id.times)).setAdapter(timesEventAdapter);
-        // Test Events
-        timesEventAdapter.setEvents(new EventListAdapter.Event[]{
-                new EventListAdapter.Event("Beginning of Day", "I love the beginning of the day. It is so nice and the sun is amazing when it goes up. It is something that I care about.", new GregorianCalendar(2016, 10, 1, 0, 1), new GregorianCalendar(2016, 10, 1, 1, 0)),
-                new EventListAdapter.Event("Breakfast cool", "I need to have breakfast to feel like a person who will have a good day.", new GregorianCalendar(2016, 10, 1, 6, 0), new GregorianCalendar(2016, 10, 1, 7, 0)),
-                new EventListAdapter.Event("2nd Breakfast", "As the hobbits always say, you can't skip second breakfast", new GregorianCalendar(2016, 10, 1, 8, 0), new GregorianCalendar(2016, 10, 1, 9, 0)),
-                new EventListAdapter.Event("Lunch", "I like to eat lunch alone", new GregorianCalendar(2016, 10, 1, 11, 23), new GregorianCalendar(2016, 10, 1, 12, 0)),
-                new EventListAdapter.Event("Dinner", "dafdsafddasffdadasffdas", new GregorianCalendar(2016, 10, 1, 17, 0), new GregorianCalendar(2016, 10, 1, 18, 0)),
-                new EventListAdapter.Event("BQV", "dsafsdfdasfdfsdsadasfdasfdfsafdfsadsfdsfadfsdsfdfsfdfdfsadsfdsafdfsdfsadfasdfasdsdfsadsfdfsdsfa", new GregorianCalendar(2016, 10, 1, 20, 0), new GregorianCalendar(2016, 10, 1, 21, 0)),
-                new EventListAdapter.Event("End of day", "adfdsa\n fdsafdas\nd adsffdasf\n", new GregorianCalendar(2016, 10, 1, 22, 10), new GregorianCalendar(2016, 10, 1, 23, 0)),
-        });
+    public void openFragment(Fragment fragment) {
+        // Framents
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.contentFragment, fragment);
+        transaction.commit();
     }
 
     @Override
@@ -100,9 +100,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_daily_view) {
-            // Handle the camera action
+            openFragment(new DailyView());
         } else if (id == R.id.nav_calendar) {
-
+            openFragment(new Calendar());
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

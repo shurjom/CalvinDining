@@ -13,10 +13,12 @@
     tools:context="edu.calvin.kpb23students.calvindining.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <ListView
-        android:orientation="vertical"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/times"></ListView>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/contentFragment">
+
+    </FrameLayout>
 </RelativeLayout>

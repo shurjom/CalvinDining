@@ -1,4 +1,4 @@
-package edu.calvin.kpb23students.calvindining;
+package edu.calvin.kpb23students.calvindining.fragments;
 
 import android.content.Context;
 
@@ -9,19 +9,16 @@ import java.util.GregorianCalendar;
 
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.text.format.Time;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.TextView;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.ListIterator;
+
+import edu.calvin.kpb23students.calvindining.R;
 
 /**
  * Created by Kristofer on 9/30/2016.
