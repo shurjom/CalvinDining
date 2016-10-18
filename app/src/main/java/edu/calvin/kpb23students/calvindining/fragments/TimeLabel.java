@@ -15,9 +15,13 @@ import android.widget.TextView;
 import edu.calvin.kpb23students.calvindining.R;
 
 /**
- * Created by Kristofer on 10/1/2016.
+ * <p>
+ * Handles displaying display items
+ * <p/>
+ *
+ * @author Kristofer
+ * @version Fall, 2016
  */
-
 public class TimeLabel extends RelativeLayout {
     private TextView name;
     private TextView beginTime;
