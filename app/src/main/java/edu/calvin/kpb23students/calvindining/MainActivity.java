@@ -27,6 +27,14 @@ import java.util.GregorianCalendar;
 import edu.calvin.kpb23students.calvindining.fragments.Calendar;
 import edu.calvin.kpb23students.calvindining.fragments.DailyView;
 
+/**
+ * <p>
+ * This is a Calvin Dining hall app made for cs 262
+ * <p/>
+ *
+ * @author Kristofer
+ * @version Fall, 2016
+ */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     @Override
@@ -51,6 +59,11 @@ public class MainActivity extends AppCompatActivity
         openFragment(new DailyView());
     }
 
+    /**
+     * Opens a fragment
+     *
+     * @param fragment the fragments that can be accessed using the sliding menu
+     */
     public void openFragment(Fragment fragment) {
         // Framents
         FragmentManager fm = getSupportFragmentManager();
@@ -59,6 +72,9 @@ public class MainActivity extends AppCompatActivity
         transaction.commit();
     }
 
+    /**
+     * Close the drawer on backpress
+     */
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -69,6 +85,11 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Create the menu options
+     * @param menu
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -76,6 +97,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * Handle the actionbar items when they are pressed.
+     * @param item action bar item pressed
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -93,6 +119,12 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Handle menu items when they are pressed.
+     *
+     * @param item the item that is selected
+     * @return true
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

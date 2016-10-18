@@ -16,6 +16,9 @@ import edu.calvin.kpb23students.calvindining.R;
 
 
 /**
+ * <p>
+ *     This class handles the daily view. This will show important things per day for the user.
+ * </p>
  * A simple {@link Fragment} subclass.
  * to handle interaction events.
  * Use the {@link DailyView#newInstance} factory method to
@@ -48,6 +51,13 @@ public class DailyView extends Fragment {
         return fragment;
     }
 
+    /**
+     * Take data and show it to the user using a linear list.
+     * @param inflater inflater to make scrolling possible
+     * @param container container to put things in
+     * @param savedInstanceState for saving states. Not used yet.
+     * @return view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

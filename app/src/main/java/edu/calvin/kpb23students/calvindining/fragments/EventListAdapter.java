@@ -21,10 +21,17 @@ import java.util.Comparator;
 import edu.calvin.kpb23students.calvindining.R;
 
 /**
- * Created by Kristofer on 9/30/2016.
+ * <p>
+ * Handles displaying data given to display.
+ * <p/>
+ *
+ * @author Kristofer
+ * @version Fall, 2016
  */
-
 public class EventListAdapter extends BaseAdapter {
+    /**
+     * Events store data given to display
+     */
     static class Event {
         public final String name;
         public final String description;
@@ -38,7 +45,10 @@ public class EventListAdapter extends BaseAdapter {
             this.endTime = endTime;
         }
     }
-    // Only difference is from times gregorian calendar to string.
+
+    /**
+     * Events changed to display item
+     */
     static class DisplayItem {
         public final String beginTime;
         public final String endTime;
@@ -58,6 +68,11 @@ public class EventListAdapter extends BaseAdapter {
     final LayoutInflater layoutInflater;
     final ArrayList<DisplayItem> displayItems;
 
+    /**
+     * Handles the displaying the events
+     * @param context
+     * @param layoutInflater
+     */
     public EventListAdapter(Context context, LayoutInflater layoutInflater) {
         this.context = context;
         this.layoutInflater = layoutInflater;
@@ -123,21 +138,40 @@ public class EventListAdapter extends BaseAdapter {
         });
     }
 
+    /**
+     * @return count
+     */
     @Override
     public int getCount() {
         return this.displayItems.size();
     }
 
+    /**
+     *
+     * @param position
+     * @return item
+     */
     @Override
     public Object getItem(int position) {
         return displayItems.get(position);
     }
 
+    /**
+     * @param position position of item
+     * @return id
+     */
     @Override
     public long getItemId(int position) {
         return -1;
     }
 
+    /**
+     * Handles view
+     * @param position position of displayItem
+     * @param convertView handle view
+     * @param parent
+     * @return timeLabel
+     */
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
