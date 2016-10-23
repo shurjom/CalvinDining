@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import android.icu.text.DateIntervalInfo;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -17,7 +18,11 @@ import android.widget.BaseAdapter;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
+import edu.calvin.kpb23students.calvindining.CalvinDiningService;
 import edu.calvin.kpb23students.calvindining.R;
 
 /**
@@ -28,36 +33,19 @@ import edu.calvin.kpb23students.calvindining.R;
  * @author Kristofer
  * @version Fall, 2016
  */
-public class EventListAdapter extends BaseAdapter {
-    /**
-     * Events store data given to display
-     */
-    static class Event {
-        public final String name;
-        public final String description;
-        public final GregorianCalendar beginTime;
-        public final GregorianCalendar endTime;
-
-        public Event(String name, String description, GregorianCalendar beginTime, GregorianCalendar endTime) {
-            this.name = name;
-            this.description = description;
-            this.beginTime = beginTime;
-            this.endTime = endTime;
-        }
-    }
-
+public class EventListAdapter extends EventListObserver {
     /**
      * Events changed to display item
      */
     static class DisplayItem {
-        public final String beginTime;
+        public final CalvinDiningService.Meal meal;
+        public final String startTime;
         public final String endTime;
-        public final Event event;
         public String duration = "";
-        public DisplayItem(String beginTime, String endTime, Event event){
-            this.beginTime = beginTime;
+        public DisplayItem(CalvinDiningService.Meal meal, String startTime, String endTime){
+            this.meal = meal;
+            this.startTime = startTime;
             this.endTime = endTime;
-            this.event = event;
         }
         public void setDuration(String duration) {
             this.duration = duration;
@@ -67,65 +55,90 @@ public class EventListAdapter extends BaseAdapter {
     final Context context;
     final LayoutInflater layoutInflater;
     final ArrayList<DisplayItem> displayItems;
+    final CalvinDiningService diningService;
+    final Observer diningServiceObserver;
+
 
     /**
      * Handles the displaying the events
      * @param context
      * @param layoutInflater
      */
-    public EventListAdapter(Context context, LayoutInflater layoutInflater) {
+    public EventListAdapter(Context context, LayoutInflater layoutInflater, final CalvinDiningService diningService) {
         this.context = context;
         this.layoutInflater = layoutInflater;
         displayItems = new ArrayList<DisplayItem>();
+        this.diningService = diningService;
+        diningServiceObserver = new Observer() {
+            @Override
+            public void update(Observable o, Object arg) {
+                // FIXME!
+                diningService.getToday();
+                setEvents(diningService.getToday());
+            }
+        };
         // Set up events
-        setEvents(new Event[]{});
+        setEvents(diningService.getToday());
     }
 
-    public void setEvents(final Event[] events) {
+    @Override
+    protected void gainedFirstDataSetObserver() {
+        diningService.addObserver(diningServiceObserver);
+    }
+
+    @Override
+    protected void lostLastDataSetObserver() {
+        diningService.deleteObserver(diningServiceObserver);
+    }
+
+    public void setEvents(final List<CalvinDiningService.Meal> meals) {
         // http://stackoverflow.com/a/21862750/2948122
         new Handler(context.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
                 displayItems.clear();
-                Log.d("X", "run: setevents " + events.length);
-                if (events.length > 0) {
+
+                // Set meals to mealArray
+                CalvinDiningService.Meal[] mealArray = meals.toArray(new CalvinDiningService.Meal[meals.size()]);
+
+
+                if (mealArray.length > 0) {
                     // Sort events by start time -------------------------------------------------------------------------------
-                    Arrays.sort(events, new Comparator<Event>() {
+                    Arrays.sort(mealArray, new Comparator<CalvinDiningService.Meal>() {
                         @Override
-                        public int compare(Event o1, Event o2) {
-                            return o1.beginTime.compareTo(o2.beginTime);
+                        public int compare(CalvinDiningService.Meal o1, CalvinDiningService.Meal o2) {
+                            return o1.getGregStartTime().compareTo(o2.getGregEndTime());
                         }
                     });
-                    int startHour = events[0].beginTime.get(Calendar.HOUR_OF_DAY);
+                    int startHour = mealArray[0].getGregStartTime().get(Calendar.HOUR_OF_DAY);
 
                     // Set displayItems
-                    DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(context);
 
                     // TODO Make this better. It looks terrible right now
                     // Version that does it per hour
                     // Add events that are empty so it can fill in the gaps this assumes events don't overlap.
                     // TODO what if events overlap? oh no
-                    GregorianCalendar beginOverlap = (GregorianCalendar) events[0].beginTime.clone();
+                    GregorianCalendar beginOverlap = (GregorianCalendar) mealArray[0].getGregStartTime().clone();
                     beginOverlap.set(Calendar.HOUR_OF_DAY, startHour);
                     beginOverlap.set(Calendar.MINUTE, 0);
                     GregorianCalendar endOverlap;
 
                     // TODO make this not use DisplayItem
                     DisplayItem betweenEvents = new DisplayItem(
-                            null,
-                            null,
-                            null
+                            null, null, null
                     );
 
-                    for (Event event: events) {
+                    DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(context);
+
+                    for (CalvinDiningService.Meal meal: mealArray) {
                         // Make time between events
                         betweenEvents.setDuration("DURATION"); // TODO duration
 
                         // Make event display item
                         DisplayItem displayItem = new DisplayItem(
-                                timeFormat.format(event.beginTime.getTime()),
-                                timeFormat.format(event.endTime.getTime()),
-                                event
+                                meal,
+                                timeFormat.format(meal.getGregStartTime().getTime()),
+                                timeFormat.format(meal.getGregEndTime().getTime())
                         );
                         displayItems.add(betweenEvents);
                         displayItems.add(displayItem);
@@ -145,7 +158,6 @@ public class EventListAdapter extends BaseAdapter {
     public int getCount() {
         return this.displayItems.size();
     }
-
     /**
      *
      * @param position
@@ -180,10 +192,10 @@ public class EventListAdapter extends BaseAdapter {
         DisplayItem displayItem = this.displayItems.get(position);
 
         // TODO use something better than an if else
-        if (displayItem.event != null) {
+        if (displayItem.meal != null) {
             // If event
             TimeLabel timeLabel = (TimeLabel)layoutInflater.inflate(R.layout.time_label, parent, false);
-            timeLabel.set(true, displayItem.event.name, displayItem.beginTime, displayItem.endTime, displayItem.event.description);
+            timeLabel.set(true, displayItem.meal.getName(), displayItem.startTime, displayItem.endTime, displayItem.meal.getDescription());
             return timeLabel;
         } else {
             // BetweenEvents

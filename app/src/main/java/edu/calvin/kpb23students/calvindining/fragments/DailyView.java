@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import java.util.GregorianCalendar;
 
+import edu.calvin.kpb23students.calvindining.MyApplication;
 import edu.calvin.kpb23students.calvindining.R;
 
 
@@ -68,9 +69,10 @@ public class DailyView extends Fragment {
 
         // Make EventList
         // http://stackoverflow.com/a/25329322/2948122
-        EventListAdapter timesEventAdapter = new EventListAdapter(container.getContext(), inflater);
+        EventListAdapter timesEventAdapter = new EventListAdapter(container.getContext(), inflater, MyApplication.getMyApplication().getCalvinDiningService());
         ((ListView)view.findViewById(R.id.fragment_daily_view_times)).setAdapter(timesEventAdapter);
         // Test Events
+        /*
         timesEventAdapter.setEvents(new EventListAdapter.Event[]{
                 new EventListAdapter.Event("Beginning of Day", "I love the beginning of the day. It is so nice and the sun is amazing when it goes up. It is something that I care about.", new GregorianCalendar(2016, 10, 1, 0, 1), new GregorianCalendar(2016, 10, 1, 1, 0)),
                 new EventListAdapter.Event("Breakfast cool", "I need to have breakfast to feel like a person who will have a good day.", new GregorianCalendar(2016, 10, 1, 6, 0), new GregorianCalendar(2016, 10, 1, 7, 0)),
@@ -80,6 +82,7 @@ public class DailyView extends Fragment {
                 new EventListAdapter.Event("BQV", "dsafsdfdasfdfsdsadasfdasfdfsafdfsadsfdsfadfsdsfdfsfdfdfsadsfdsafdfsdfsadfasdfasdsdfsadsfdfsdsfa", new GregorianCalendar(2016, 10, 1, 20, 0), new GregorianCalendar(2016, 10, 1, 21, 0)),
                 new EventListAdapter.Event("End of day", "adfdsa\n fdsafdas\nd adsffdasf\n", new GregorianCalendar(2016, 10, 1, 22, 10), new GregorianCalendar(2016, 10, 1, 23, 0)),
         });
+        */
         // Inflate the layout for this fragment
         return view;
     }
