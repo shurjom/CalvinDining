@@ -23,16 +23,16 @@ import retrofit2.http.Headers;
  * Created by Kristofer on 2016-10-22.
  */
 public class CalvinDiningService extends Observable{
-    final InterfaceService service;
-    List<Meal> today = new ArrayList<Meal>();
-    public CalvinDiningService(Retrofit retrofit) {
+    private final InterfaceService service;
+    private List<Meal> today = new ArrayList<>();
+    CalvinDiningService(Retrofit retrofit) {
         service = retrofit.create(InterfaceService.class);
         check();
     }
 
     /**
      * You must call this from the UI thread.
-     * @return
+     * @return today
      */
     public List<Meal> getToday() {
         return today;
@@ -70,7 +70,6 @@ public class CalvinDiningService extends Observable{
 
     private interface InterfaceService {
         @GET("today")
-        @Headers({"Cache-Control: max-stale=86400"}) // 1 day 60*60*24
         Call<List<Meal>> today();
     }
 
