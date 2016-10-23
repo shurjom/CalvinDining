@@ -20,6 +20,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 
 /**
+ * CalvinDiningService handles getting information from server
  * Created by Kristofer on 2016-10-22.
  */
 public class CalvinDiningService extends Observable{
