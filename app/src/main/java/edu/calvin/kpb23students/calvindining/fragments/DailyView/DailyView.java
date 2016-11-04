@@ -16,36 +16,10 @@ import edu.calvin.kpb23students.calvindining.R;
  * <p>
  *     This class handles the daily view. This will show important things per day for the user.
  * </p>
- * A simple {@link Fragment} subclass.
- * to handle interaction events.
- * Use the {@link DailyView#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class DailyView extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     public DailyView() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DailyView.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DailyView newInstance(String param1, String param2) {
-        DailyView fragment = new DailyView();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     /**
@@ -58,6 +32,7 @@ public class DailyView extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (container == null) {Log.d("x", "container is null :-/"); throw new RuntimeException("Expected non-null container!");}
         View view = inflater.inflate(R.layout.fragment_daily_view, container, false);
 
         // Added stuffs

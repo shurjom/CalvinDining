@@ -70,18 +70,18 @@ public class EventListAdapter extends EventListObserver {
         diningServiceObserver = new Observer() {
             @Override
             public void update(Observable o, Object arg) {
-                // FIXME!
-                diningService.getToday();
                 setEvents(diningService.getToday());
             }
         };
-        // Set up events
-        setEvents(diningService.getToday());
     }
 
     @Override
     protected void gainedFirstDataSetObserver() {
         diningService.addObserver(diningServiceObserver);
+        // Do initial load of data after observer is added so that
+        // we get updated with any changes that happened between
+        // construction and when a subscriber was added.
+        setEvents(diningService.getToday());
     }
 
     @Override
