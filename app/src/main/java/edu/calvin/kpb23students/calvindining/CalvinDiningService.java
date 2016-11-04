@@ -40,10 +40,10 @@ public class CalvinDiningService extends Observable{
     }
 
     public static class Meal {
-        String name;
-        String startTime;
-        String endTime;
-        String description;
+        private String name;
+        private String startTime;
+        private String endTime;
+        private String description;
         private transient GregorianCalendar gregStartTime;
         private transient GregorianCalendar gregEndTime;
 
@@ -61,9 +61,7 @@ public class CalvinDiningService extends Observable{
             }
             return gregTime;
         }
-        public GregorianCalendar getGregStartTime() {
-            return updateGregTime(gregStartTime, startTime);
-        }
+        public GregorianCalendar getGregStartTime() { return updateGregTime(gregStartTime, startTime); }
         public GregorianCalendar getGregEndTime() {
             return updateGregTime(gregEndTime, endTime);
         }
