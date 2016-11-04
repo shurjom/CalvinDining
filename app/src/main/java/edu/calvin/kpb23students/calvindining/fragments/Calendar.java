@@ -11,12 +11,11 @@ import android.view.ViewGroup;
 import edu.calvin.kpb23students.calvindining.R;
 
 
+
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement
- * to handle interaction events.
- * Use the {@link Calendar#newInstance} factory method to
- * create an instance of this fragment.
+ * <p>
+ *     This fragment shows the calendar
+ * </p>
  */
 public class Calendar extends Fragment {
     public Calendar() {

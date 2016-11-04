@@ -11,6 +11,11 @@ import android.view.ViewGroup;
 import edu.calvin.kpb23students.calvindining.R;
 
 
+/**
+ * <p>
+ *     This fragment shows prices for guests and students
+ * </p>
+ */
 public class Prices extends Fragment {
     public Prices() {
         // Required empty public constructor

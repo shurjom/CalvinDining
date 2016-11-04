@@ -10,7 +10,11 @@ import android.view.ViewGroup;
 
 import edu.calvin.kpb23students.calvindining.R;
 
-
+/**
+ * <p>
+ *     This fragment shows hours
+ * </p>
+ */
 public class Hours extends Fragment {
     public Hours() {
         // Required empty public constructor

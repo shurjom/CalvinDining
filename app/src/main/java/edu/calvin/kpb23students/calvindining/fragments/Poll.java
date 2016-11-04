@@ -10,6 +10,12 @@ import android.view.ViewGroup;
 
 import edu.calvin.kpb23students.calvindining.R;
 
+
+/**
+ * <p>
+ *     This fragment will allow you to do polling
+ * </p>
+ */
 public class Poll extends Fragment {
 
     public Poll() {

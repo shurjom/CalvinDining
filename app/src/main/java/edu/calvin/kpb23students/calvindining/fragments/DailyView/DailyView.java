@@ -14,8 +14,11 @@ import edu.calvin.kpb23students.calvindining.R;
 
 /**
  * <p>
- *     This class handles the daily view. This will show important things per day for the user.
- * </p>
+     This class handles the daily view. It will show important things about the day to the user.
+ * <p/>
+ *
+ * @author Kristofer
+ * @version Fall, 2016
  */
 public class DailyView extends Fragment {
     public DailyView() {

@@ -4,9 +4,13 @@ import android.database.DataSetObserver;
 import android.widget.BaseAdapter;
 
 /**
- * Created by Kristofer on 2016-10-22.
+ * <p>
+ * This handles Observers
+ * <p/>
+ *
+ * @author Kristofer
+ * @version Fall, 2016
  */
-
 abstract class EventListObserver extends BaseAdapter {
     private int observerCount;
     @Override

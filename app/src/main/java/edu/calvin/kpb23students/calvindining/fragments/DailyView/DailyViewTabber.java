@@ -23,7 +23,14 @@ import android.widget.TextView;
 
 import edu.calvin.kpb23students.calvindining.R;
 
-
+/**
+ * <p>
+ *  This handles changing between different daily views
+ * <p/>
+ *
+ * @author Kristofer
+ * @version Fall, 2016
+ */
 public class DailyViewTabber extends Fragment {
     @Nullable
     @Override

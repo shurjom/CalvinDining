@@ -10,7 +10,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
 /**
- * Created by Kristofer on 2016-10-22.
+ * <p>
+ * This gets information from the server
+ * <p/>
+ *
+ * @author Kristofer
+ * @version Fall, 2016
  */
 public class MyApplication extends Application {
 
