@@ -20,8 +20,12 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 
 /**
- * CalvinDiningService handles getting information from server
- * Created by Kristofer on 2016-10-22.
+ * <p>
+ * Handles getting information from the server
+ * <p/>
+ *
+ * @author Kristofer
+ * @version Fall, 2016
  */
 public class CalvinDiningService extends Observable{
     private final InterfaceService service;
@@ -30,7 +34,6 @@ public class CalvinDiningService extends Observable{
         service = retrofit.create(InterfaceService.class);
         check();
     }
-
     /**
      * You must call this from the UI thread.
      * @return today

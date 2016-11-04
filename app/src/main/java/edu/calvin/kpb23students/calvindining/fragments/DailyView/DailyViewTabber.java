@@ -68,8 +68,14 @@ public class DailyViewTabber extends Fragment {
         }
 
         @Override
-        public CharSequence getPageTitle(int position) {
-            return "Hello";
+        public CharSequence getPageTitle(int pos) {
+            switch(pos) {
+                case 0: return "Commons";
+                case 1: return "KnollCrest";
+                case 2: return "Johnny's";
+                case 3: return "Kristofer";
+            }
+            throw new RuntimeException("index out of range");
         }
     }
 }

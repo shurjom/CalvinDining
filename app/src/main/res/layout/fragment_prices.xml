@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,8 +7,21 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:text="Pricesssssssssssssss"
+        android:text="Commons and KnollCrest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView4" />
-</FrameLayout>
+        android:layout_marginTop="79dp"
+        android:id="@+id/textView8"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="101dp" />
+
+    <TextView
+        android:text="Guest Cost per Meal:\n Hot Breakfast—$6.90\n Continental—$5.15\n Lunch—$8.75\n Dinner—$10.50\n\nChildren rates:\n 0–4 years—Free\n 5–11 years—1/2 off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/textView8"
+        android:layout_alignStart="@+id/textView8" />
+</RelativeLayout>

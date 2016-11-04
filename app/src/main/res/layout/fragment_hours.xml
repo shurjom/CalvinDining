@@ -7,8 +7,8 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:text="I will tell you the hours of places! Isn't that great?"
+        android:text="Monday - Thursday Hot Breakfast - 7:15am - 9:00am Continental Breakfast - 9:00am - 10:30am Lunch - 11:00am - 2:00pm Piazza and Salad Bar - 2:00pm - 4:45pm Enter through UpperCrust Dinner - 4:45pm - 6:00pm Friday Hot Breakfast - 7:15am - 9:00am Continental Breakfast - 9:00am - 10:30am Lunch - 11:00am - 2:00pm Dinner - Closed Saturday Closed Sunday Continental Breakfast - 8:30am - 11:30am Lunch - 11:45am - 1:30pm Dinner - 5:00pm - 7:00pm"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="181dp"
         android:id="@+id/textView2" />
 </FrameLayout>
