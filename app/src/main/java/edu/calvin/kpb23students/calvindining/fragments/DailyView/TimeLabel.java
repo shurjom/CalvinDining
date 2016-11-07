@@ -51,10 +51,11 @@ public class TimeLabel extends RelativeLayout {
         Resources.Theme theme = getContext().getTheme();
         theme.resolveAttribute(android.R.attr.colorBackground, typedValue, true);
         int color = typedValue.data;
-
+        theme.resolveAttribute(android.R.attr.colorActivatedHighlight, typedValue, true);
+        int colorPrimary = typedValue.data;
         // TODO make own color for this http://stackoverflow.com/a/30905173/2948122
         if (isCurrent) { // Highlight block
-            setBackgroundColor(0xfffabade);
+            setBackgroundColor(colorPrimary);
         } else { // Dehighlight block
             setBackgroundColor(color);
         }

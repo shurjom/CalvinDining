@@ -29,20 +29,40 @@ import retrofit2.http.Headers;
  */
 public class CalvinDiningService extends Observable{
     private final InterfaceService service;
-    private List<Meal> today = new ArrayList<>();
+    private List<Venue> venues = new ArrayList<>();
     CalvinDiningService(Retrofit retrofit) {
         service = retrofit.create(InterfaceService.class);
         check();
     }
     /**
      * You must call this from the UI thread.
-     * @return today
+     * @return venues
      */
-    public List<Meal> getToday() {
-        return today;
+    public List<Venue> getVenues() {
+        return venues;
+    }
+
+
+    public List<Meal> getEvents(String venueName) {
+        for (Venue venue : venues) {
+            if (venueName.equals(venue.name)) {
+                return venue.events;
+            }
+        }
+        return new ArrayList<Meal>();
+    }
+
+    public static class Venue {
+        private String name;
+        private List<Meal> events;
+
+        public String getName() {
+            return name;
+        }
     }
 
     public static class Meal {
+
         private String name;
         private String startTime;
         private String endTime;
@@ -71,22 +91,24 @@ public class CalvinDiningService extends Observable{
     }
 
     private interface InterfaceService {
-        @GET("today")
-        Call<List<Meal>> today();
+        @GET("today") // TODO make this venues on server and here
+        Call<List<Venue>> venues();
+
+
     }
 
     public void check() {
-        service.today().enqueue(new Callback<List<Meal>>() {
+        service.venues().enqueue(new Callback<List<Venue>>() {
             @Override
-            public void onResponse(Call<List<Meal>> call, Response<List<Meal>> response) {
-                today = response.body();
+            public void onResponse(Call<List<Venue>> call, Response<List<Venue>> response) {
+                venues = response.body();
                 setChanged();
                 notifyObservers();
             }
 
             @Override
-            public void onFailure(Call<List<Meal>> call, Throwable t) {
-                Log.v("x", "Today failed: " + t + " :oh no.");
+            public void onFailure(Call<List<Venue>> call, Throwable t) {
+                Log.v("x", "Venue failed: " + t + " :oh no.");
             }
         });
     }

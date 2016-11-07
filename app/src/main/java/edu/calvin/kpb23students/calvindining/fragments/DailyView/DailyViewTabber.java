@@ -21,6 +21,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+
+import edu.calvin.kpb23students.calvindining.CalvinDiningService;
+import edu.calvin.kpb23students.calvindining.MyApplication;
 import edu.calvin.kpb23students.calvindining.R;
 
 /**
@@ -39,9 +46,7 @@ public class DailyViewTabber extends Fragment {
 
         ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
         // When using fragment nesting, be sure to use the right fragment manager! http://stackoverflow.com/a/13466829/2948122
-        pager.setAdapter(new MyPagerAdapter(getChildFragmentManager()));
-
-
+        pager.setAdapter(new MyPagerAdapter(getChildFragmentManager(), MyApplication.getMyApplication().getCalvinDiningService()));
 
         // Give the TabLayout the ViewPager
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.sliding_tabs);
@@ -50,39 +55,51 @@ public class DailyViewTabber extends Fragment {
         return view;
     }
 
-    private class MyPagerAdapter extends FragmentPagerAdapter {
-
-        public MyPagerAdapter(FragmentManager fm) {
+    private class MyPagerAdapter extends ObservingFragmentPagerAdapter {
+        private List<CalvinDiningService.Venue> venues;
+        final private CalvinDiningService diningService;
+        final Observer diningServiceObserver;
+        public MyPagerAdapter(FragmentManager fm, final CalvinDiningService diningService) {
             super(fm);
+            this.diningService = diningService;
+            venues = new ArrayList<CalvinDiningService.Venue>();
+            diningServiceObserver = new Observer() {
+                @Override
+                public void update(Observable o, Object arg) {
+                    venues = diningService.getVenues();
+                    notifyDataSetChanged(); // rerun getView to notice new changes
+                }
+            };
+        }
 
+        @Override
+        protected void gainedFirstDataSetObserver() {
+            diningService.addObserver(diningServiceObserver);
+            // Do initial load of data after observer is added so that
+            // we get updated with any changes that happened between
+            // construction and when a subscriber was added.
+            diningServiceObserver.update(null, null);
+        }
+
+        @Override
+        protected void lostLastDataSetObserver() {
+            diningService.deleteObserver(diningServiceObserver);
         }
 
         @Override
         public Fragment getItem(int pos) {
-            switch(pos) {
-
-                case 0: return new DailyView();
-                case 1: return new DailyView();
-                case 2: return new DailyView();
-                case 3: return new DailyView();
-            }
-            throw new RuntimeException("index out of range");
+            return DailyView.newInstance(venues.get(pos).getName());
         }
 
         @Override
         public int getCount() {
-            return 4;
+            return venues.size();
         }
 
         @Override
         public CharSequence getPageTitle(int pos) {
-            switch(pos) {
-                case 0: return "Commons";
-                case 1: return "KnollCrest";
-                case 2: return "Johnny's";
-                case 3: return "Kristofer";
-            }
-            throw new RuntimeException("index out of range");
+            Log.v("x", "venues:" + venues.get(pos).getName());
+            return venues.get(pos).getName();
         }
     }
 }

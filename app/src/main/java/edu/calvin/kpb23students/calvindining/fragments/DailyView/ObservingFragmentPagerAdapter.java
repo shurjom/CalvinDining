@@ -1,18 +1,20 @@
 package edu.calvin.kpb23students.calvindining.fragments.DailyView;
 
 import android.database.DataSetObserver;
-import android.widget.BaseAdapter;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 
 /**
- * <p>
- * This handles Observers
- * <p/>
- *
- * @author Kristofer
- * @version Fall, 2016
+ * Created by Kristofer on 2016-11-06.
  */
-public abstract class EventListObserver extends BaseAdapter {
+
+public abstract class ObservingFragmentPagerAdapter extends FragmentPagerAdapter {
     private int observerCount;
+
+    public ObservingFragmentPagerAdapter(FragmentManager fm) {
+        super(fm);
+    }
+
     @Override
     public void registerDataSetObserver(DataSetObserver observer) {
         super.registerDataSetObserver(observer);

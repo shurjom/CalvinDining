@@ -55,14 +55,15 @@ public class EventListAdapter extends EventListObserver {
     final ArrayList<DisplayItem> displayItems;
     final CalvinDiningService diningService;
     final Observer diningServiceObserver;
-
+    final String diningVenueName;
 
     /**
      * Handles the displaying the events
      * @param context
      * @param layoutInflater
      */
-    public EventListAdapter(Context context, LayoutInflater layoutInflater, final CalvinDiningService diningService) {
+    public EventListAdapter(Context context, LayoutInflater layoutInflater, final CalvinDiningService diningService, final String diningVenueName) {
+        this.diningVenueName = diningVenueName;
         this.context = context;
         this.layoutInflater = layoutInflater;
         displayItems = new ArrayList<DisplayItem>();
@@ -70,7 +71,7 @@ public class EventListAdapter extends EventListObserver {
         diningServiceObserver = new Observer() {
             @Override
             public void update(Observable o, Object arg) {
-                setEvents(diningService.getToday());
+                setEvents();
             }
         };
     }
@@ -81,7 +82,7 @@ public class EventListAdapter extends EventListObserver {
         // Do initial load of data after observer is added so that
         // we get updated with any changes that happened between
         // construction and when a subscriber was added.
-        setEvents(diningService.getToday());
+        diningServiceObserver.update(null, null);
     }
 
     @Override
@@ -89,7 +90,8 @@ public class EventListAdapter extends EventListObserver {
         diningService.deleteObserver(diningServiceObserver);
     }
 
-    public void setEvents(final List<CalvinDiningService.Meal> meals) {
+    private void setEvents() {
+        final List<CalvinDiningService.Meal> meals = diningService.getEvents(diningVenueName);
         // http://stackoverflow.com/a/21862750/2948122
         new Handler(context.getMainLooper()).post(new Runnable() {
             @Override
