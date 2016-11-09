@@ -146,6 +146,15 @@ public class EventListAdapter extends EventListObserver {
                     betweenEvents.setDuration("DURATION");
                     displayItems.add(betweenEvents);
                 }
+                // If no meals tell the user
+                // TODO make this better and make between events not use the display item class or not?
+                if (displayItems.size() == 0) {
+                    DisplayItem betweenEvents = new DisplayItem(
+                            null, null, null
+                    );
+                    betweenEvents.setDuration("THERE ARE NO MEALS TODAY");
+                    displayItems.add(betweenEvents);
+                }
                 notifyDataSetChanged(); // rerun getView to notice new changes
             }
         });

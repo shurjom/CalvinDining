@@ -91,7 +91,7 @@ public class CalvinDiningService extends Observable{
     }
 
     private interface InterfaceService {
-        @GET("today") // TODO make this venues on server and here
+        @GET("venues") // TODO make this venues on server and here
         Call<List<Venue>> venues();
 
 
