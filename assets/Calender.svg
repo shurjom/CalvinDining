@@ -3,27 +3,29 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="1024px" height="1024px" viewBox="0 0 1024 1024" enable-background="new 0 0 1024 1024" xml:space="preserve">
-<rect x="203.429" y="203.429" fill="#98252B" width="617.143" height="617.143"/>
-<rect x="227" y="234.714" fill="#FFFFFF" width="570" height="132.857"/>
 <g>
-	<rect x="343.429" y="407.929" fill="#FFFFFF" width="105.714" height="105.714"/>
-	<rect x="459.143" y="407.929" fill="#FFFFFF" width="105.714" height="105.714"/>
-	<rect x="227" y="407.929" fill="#FFFFFF" width="105.714" height="105.714"/>
-	<rect x="691.286" y="407.929" fill="#FFFFFF" width="105.714" height="105.714"/>
-	<rect x="574.857" y="407.929" fill="#FFFFFF" width="105.714" height="105.714"/>
-</g>
-<g>
-	<rect x="343.429" y="536.786" fill="#FFFFFF" width="105.714" height="105.714"/>
-	<rect x="459.143" y="536.786" fill="#FFFFFF" width="105.714" height="105.714"/>
-	<rect x="227" y="536.786" fill="#FFFFFF" width="105.714" height="105.714"/>
-	<rect x="691.286" y="536.786" fill="#FFFFFF" width="105.714" height="105.714"/>
-	<rect x="574.857" y="536.786" fill="#FFFFFF" width="105.714" height="105.714"/>
-</g>
-<g>
-	<rect x="343.429" y="666.5" fill="#FFFFFF" width="105.714" height="105.714"/>
-	<rect x="459.143" y="666.5" fill="#FFFFFF" width="105.714" height="105.714"/>
-	<rect x="227" y="666.5" fill="#FFFFFF" width="105.714" height="105.714"/>
-	<rect x="691.286" y="666.5" fill="#FFFFFF" width="105.714" height="105.714"/>
-	<rect x="574.857" y="666.5" fill="#FFFFFF" width="105.714" height="105.714"/>
+	<rect fill="#98252B" width="1024" height="1024"/>
+	<rect x="39.111" y="51.911" fill="#FFFFFF" width="945.778" height="220.444"/>
+	<g>
+		<rect x="232.296" y="339.319" fill="#FFFFFF" width="175.407" height="175.407"/>
+		<rect x="424.296" y="339.319" fill="#FFFFFF" width="175.407" height="175.407"/>
+		<rect x="39.111" y="339.319" fill="#FFFFFF" width="175.407" height="175.407"/>
+		<rect x="809.481" y="339.319" fill="#FFFFFF" width="175.407" height="175.407"/>
+		<rect x="616.296" y="339.319" fill="#FFFFFF" width="175.407" height="175.407"/>
+	</g>
+	<g>
+		<rect x="232.296" y="553.126" fill="#FFFFFF" width="175.407" height="175.407"/>
+		<rect x="424.296" y="553.126" fill="#FFFFFF" width="175.407" height="175.407"/>
+		<rect x="39.111" y="553.126" fill="#FFFFFF" width="175.407" height="175.407"/>
+		<rect x="809.481" y="553.126" fill="#FFFFFF" width="175.407" height="175.407"/>
+		<rect x="616.296" y="553.126" fill="#FFFFFF" width="175.407" height="175.407"/>
+	</g>
+	<g>
+		<rect x="232.296" y="768.356" fill="#FFFFFF" width="175.407" height="175.407"/>
+		<rect x="424.296" y="768.356" fill="#FFFFFF" width="175.407" height="175.407"/>
+		<rect x="39.111" y="768.356" fill="#FFFFFF" width="175.407" height="175.407"/>
+		<rect x="809.481" y="768.356" fill="#FFFFFF" width="175.407" height="175.407"/>
+		<rect x="616.296" y="768.356" fill="#FFFFFF" width="175.407" height="175.407"/>
+	</g>
 </g>
 </svg>
