@@ -132,7 +132,7 @@ public class EventListAdapter extends EventListObserver {
 
                     for (CalvinDiningService.Meal meal: mealArray) {
                         // Make time between events
-                        betweenEvents.setDuration("DURATION"); // TODO duration
+                        betweenEvents.setDuration(""); // TODO duration
 
                         // Make event display item
                         DisplayItem displayItem = new DisplayItem(
@@ -143,7 +143,7 @@ public class EventListAdapter extends EventListObserver {
                         displayItems.add(betweenEvents);
                         displayItems.add(displayItem);
                     }
-                    betweenEvents.setDuration("DURATION");
+                    betweenEvents.setDuration("");
                     displayItems.add(betweenEvents);
                 }
                 // If no meals tell the user

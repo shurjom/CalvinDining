@@ -98,8 +98,8 @@ public class DailyViewTabber extends Fragment {
 
         @Override
         public CharSequence getPageTitle(int pos) {
-            Log.v("x", "venues:" + venues.get(pos).getName());
-            return venues.get(pos).getName();
+            Log.v("x", "venues:" + venues.get(pos).getDisplayName());
+            return venues.get(pos).getDisplayName();
         }
     }
 }

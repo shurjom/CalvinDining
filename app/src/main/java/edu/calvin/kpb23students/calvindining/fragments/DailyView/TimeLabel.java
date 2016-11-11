@@ -3,6 +3,8 @@ package edu.calvin.kpb23students.calvindining.fragments.DailyView;
 import android.content.Context;
 import android.content.res.Resources;
 import android.media.Rating;
+import android.os.Build;
+import android.text.Html;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import edu.calvin.kpb23students.calvindining.R;
+
 
 /**
  * <p>
@@ -55,9 +58,9 @@ public class TimeLabel extends RelativeLayout {
         int colorPrimary = typedValue.data;
         // TODO make own color for this http://stackoverflow.com/a/30905173/2948122
         if (isCurrent) { // Highlight block
+            setBackgroundColor(0xffeffafa);
+        } else { // Dehighlight blockdfd
             setBackgroundColor(colorPrimary);
-        } else { // Dehighlight block
-            setBackgroundColor(color);
         }
     }
 
@@ -75,6 +78,12 @@ public class TimeLabel extends RelativeLayout {
         this.name.setText(name);
         this.beginTime.setText(beginTime);
         this.endTime.setText(endTime);
-        this.description.setText(description);
+
+        // Use depricated if older version
+        if (((int) Build.VERSION.SDK_INT) >= 24) {
+            this.description.setText(Html.fromHtml(description, 0));
+        } else {
+            this.description.setText(Html.fromHtml(description));
+        }
     }
 }

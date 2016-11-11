@@ -59,6 +59,13 @@ public class CalvinDiningService extends Observable{
         public String getName() {
             return name;
         }
+
+        public String getDisplayName() {
+            String cutName = name;
+            cutName = cutName.replaceAll("Dining Hall", "");
+            cutName = cutName.replaceAll("Cafe", "");
+            return cutName;
+        }
     }
 
     public static class Meal {
