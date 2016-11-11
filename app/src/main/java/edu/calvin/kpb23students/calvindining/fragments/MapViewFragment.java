@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,13 +86,18 @@ public class MapViewFragment extends Fragment implements OnMapReadyCallback {
         super.onLowMemory();
         mMapView.onLowMemory();
     }
+    
 
 
     @Override
     public void onMapReady(GoogleMap map) {
 
-
-        map.setMyLocationEnabled(true);
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            Log.v("x", "LOOOOOOOOOOOOOOCATION GRANDTED");
+            map.setMyLocationEnabled(true);
+        }
+        Log.v("x", "LOCATION");
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(42.930962, -85.587413), 16));
 
         makeMarker(map, "Johnny's", new LatLng(42.930962, -85.587413));
