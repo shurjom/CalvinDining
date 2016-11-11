@@ -18,7 +18,8 @@ import edu.calvin.kpb23students.calvindining.fragments.About;
 import edu.calvin.kpb23students.calvindining.fragments.Calendar;
 import edu.calvin.kpb23students.calvindining.fragments.DailyView.DailyViewTabber;
 import edu.calvin.kpb23students.calvindining.fragments.Hours;
-import edu.calvin.kpb23students.calvindining.fragments.Map;
+import edu.calvin.kpb23students.calvindining.fragments.MapViewFragment;
+import edu.calvin.kpb23students.calvindining.fragments.MapViewFragment;
 import edu.calvin.kpb23students.calvindining.fragments.Prices;
 import edu.calvin.kpb23students.calvindining.fragments.Vote;
 
@@ -49,6 +50,16 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setCheckedItem(R.id.nav_daily_view); // set nav daily view to be selected on startup
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        // Google maps
+        // Pushing MapView Fragment
+        /*
+        android.app.Fragment fragment = android.app.Fragment.instantiate(this, MapViewFragment.class.getName());
+        android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.fra, fragment);
+        ft.commit();*/
+
 
         // Start with daily view opened
         openFragment(new DailyViewTabber());
@@ -137,7 +148,7 @@ public class MainActivity extends AppCompatActivity
         }  else if (id == R.id.nav_vote) {
             openFragment(new Vote());
         } else if (id == R.id.nav_map) {
-            openFragment(new Map());
+            openFragment(new MapViewFragment());
         } else if (id == R.id.nav_about) {
             openFragment(new About());
         } else if (id == R.id.nav_settings) {
