@@ -2,17 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.calvin.kpb23students.calvindining.fragments.Poll">
+    tools:context="edu.calvin.kpb23students.calvindining.fragments.Map">
 
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView5" />
-
-    <TextView
-        android:text="@string/polls"
+        android:text="This is the map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView7" />

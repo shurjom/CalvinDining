@@ -11,21 +11,18 @@ import android.view.ViewGroup;
 import edu.calvin.kpb23students.calvindining.R;
 
 
-/**
- * <p>
- *     This fragment will allow you to do polling
- * </p>
- */
-public class Poll extends Fragment {
+public class Map extends Fragment {
 
-    public Poll() {
+    public Map() {
         // Required empty public constructor
     }
+    // Required empty public constructor
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_poll, container, false);
+        return inflater.inflate(R.layout.fragment_map, container, false);
     }
 }

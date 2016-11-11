@@ -18,7 +18,7 @@ import edu.calvin.kpb23students.calvindining.fragments.About;
 import edu.calvin.kpb23students.calvindining.fragments.Calendar;
 import edu.calvin.kpb23students.calvindining.fragments.DailyView.DailyViewTabber;
 import edu.calvin.kpb23students.calvindining.fragments.Hours;
-import edu.calvin.kpb23students.calvindining.fragments.Poll;
+import edu.calvin.kpb23students.calvindining.fragments.Map;
 import edu.calvin.kpb23students.calvindining.fragments.Prices;
 import edu.calvin.kpb23students.calvindining.fragments.Vote;
 
@@ -134,12 +134,12 @@ public class MainActivity extends AppCompatActivity
             openFragment(new Hours());
         } else if (id == R.id.nav_prices) {
             openFragment(new Prices());
+        }  else if (id == R.id.nav_vote) {
+            openFragment(new Vote());
+        } else if (id == R.id.nav_map) {
+            openFragment(new Map());
         } else if (id == R.id.nav_about) {
             openFragment(new About());
-        } else if (id == R.id.nav_poll) {
-            openFragment(new Poll());
-        } else if (id == R.id.nav_vote) {
-            openFragment(new Vote());
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
