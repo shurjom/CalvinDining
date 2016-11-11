@@ -86,16 +86,16 @@ public class MapViewFragment extends Fragment implements OnMapReadyCallback {
         super.onLowMemory();
         mMapView.onLowMemory();
     }
-    
+
 
 
     @Override
     public void onMapReady(GoogleMap map) {
 
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            Log.v("x", "LOOOOOOOOOOOOOOCATION GRANDTED");
+        try {
             map.setMyLocationEnabled(true);
+        } catch (SecurityException e) {
+            Log.v("x", e.getMessage());
         }
         Log.v("x", "LOCATION");
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(42.930962, -85.587413), 16));
