@@ -11,7 +11,8 @@
         android:id="@+id/beginTime"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:textColor="?android:attr/textColorPrimary" />
+        android:textColor="?android:attr/textColorPrimary"
+        android:padding="3dp" />
 
     <TextView
         android:text="name"
@@ -32,7 +33,8 @@
         android:id="@+id/endTime"
         android:textColor="?android:attr/textColorPrimary"
         android:layout_below="@+id/description"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:padding="3dp" />
 
     <TextView
         android:text="description"
@@ -43,5 +45,7 @@
         android:padding="10dp"
         android:paddingBottom="0dp"
         android:layout_below="@+id/name"
-        android:layout_toEndOf="@+id/beginTime" />
+        android:layout_alignParentStart="true"
+        android:paddingLeft="0dp"
+        android:layout_marginLeft="20dp" />
 </edu.calvin.kpb23students.calvindining.fragments.DailyView.TimeLabel>
