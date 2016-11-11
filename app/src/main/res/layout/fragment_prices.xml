@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.calvin.kpb23students.calvindining.fragments.Prices">
+    tools:context="edu.calvin.kpb23students.calvindining.fragments.Prices"
+    android:padding="10dp">
 
     <!-- TODO: Update blank fragment layout -->
 

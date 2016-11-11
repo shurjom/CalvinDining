@@ -11,7 +11,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="700dp">
+            android:layout_height="700dp"
+            android:padding="10dp">
 
             <TextView
                 android:text="Commons:"

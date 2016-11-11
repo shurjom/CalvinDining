@@ -140,6 +140,10 @@ public class MainActivity extends AppCompatActivity
             openFragment(new Map());
         } else if (id == R.id.nav_about) {
             openFragment(new About());
+        } else if (id == R.id.nav_settings) {
+            Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
+            startActivity(i);
+            return true;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
