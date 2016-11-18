@@ -89,17 +89,27 @@ public class TimeLabelBetween extends RelativeLayout{
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.duration = (TextView)findViewById(R.id.duration);
+        this.duration = (TextView)findViewById(R.id.day);
     }
 
     /**
      *  Sets isCurrent and string duration
      * @param isCurrent
-     * @param duration
+     * @param day
      */
-    public void set(Boolean isCurrent, String duration) {
+    public void set(Boolean isCurrent, String day) {
         setIsCurrent(isCurrent);
-        this.duration.setText(duration);
+        this.duration.setText(day);
+        this.duration.setTextSize(20);
+        setBackgroundColor(0xffffffaa);
+    }
+
+    /**
+     *
+     * @param isCurrent
+     */
+    public void set(Boolean isCurrent) {
+        setIsCurrent(isCurrent);
     }
 }
 

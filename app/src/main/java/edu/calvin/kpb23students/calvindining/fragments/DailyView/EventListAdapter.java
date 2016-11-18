@@ -5,6 +5,7 @@ import android.content.Context;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.GregorianCalendar;
 
 import android.os.Handler;
@@ -39,14 +40,25 @@ public class EventListAdapter extends EventListObserver {
         public final CalvinDiningService.Meal meal;
         public final String startTime;
         public final String endTime;
-        public String duration = "";
+        public final String day;
         public DisplayItem(CalvinDiningService.Meal meal, String startTime, String endTime){
             this.meal = meal;
             this.startTime = startTime;
             this.endTime = endTime;
+            this.day = null;
         }
-        public void setDuration(String duration) {
-            this.duration = duration;
+
+        public DisplayItem() {
+            this.meal = null;
+            this.startTime = null;
+            this.endTime = null;
+            this.day = null;
+        }
+        public DisplayItem(String day) {
+            this.meal = null;
+            this.startTime = null;
+            this.endTime = null;
+            this.day = day;
         }
     }
 
@@ -94,6 +106,22 @@ public class EventListAdapter extends EventListObserver {
         final List<CalvinDiningService.Meal> meals = diningService.getEvents(diningVenueName);
         // http://stackoverflow.com/a/21862750/2948122
         new Handler(context.getMainLooper()).post(new Runnable() {
+
+            private void makeDay(String day, Collection<CalvinDiningService.Meal> meals, DateFormat timeFormat){
+                displayItems.add(new DisplayItem(day));
+                for (CalvinDiningService.Meal meal: meals) {
+                    // Make event display item
+                    DisplayItem displayItem = new DisplayItem(
+                            meal,
+                            timeFormat.format(meal.getGregStartTime().getTime()),
+                            timeFormat.format(meal.getGregEndTime().getTime())
+                    );
+                    displayItems.add(displayItem);
+                    displayItems.add(new DisplayItem());
+                }
+            }
+
+
             @Override
             public void run() {
                 displayItems.clear();
@@ -113,52 +141,47 @@ public class EventListAdapter extends EventListObserver {
                     int startHour = mealArray[0].getGregStartTime().get(Calendar.HOUR_OF_DAY);
 
                     // Set displayItems
-
-                    // TODO Make this better. It looks terrible right now
-                    // Version that does it per hour
                     // Add events that are empty so it can fill in the gaps this assumes events don't overlap.
-                    // TODO what if events overlap? oh no
                     GregorianCalendar beginOverlap = (GregorianCalendar) mealArray[0].getGregStartTime().clone();
                     beginOverlap.set(Calendar.HOUR_OF_DAY, startHour);
                     beginOverlap.set(Calendar.MINUTE, 0);
                     GregorianCalendar endOverlap;
 
-                    // TODO make this not use DisplayItem
-                    DisplayItem betweenEvents = new DisplayItem(
-                            null, null, null
-                    );
 
                     DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(context);
 
+                    // Split into today and tomorrow then make them
+                    // Get todays date
+                    final Calendar today = Calendar.getInstance(); // get current time
+                    today.setTimeZone(mealArray[0].getGregStartTime().getTimeZone()); // set to right time zone
+                    ArrayList<CalvinDiningService.Meal> todayMeal = new ArrayList<CalvinDiningService.Meal>();
+                    ArrayList<CalvinDiningService.Meal> tomorrowMeal = new ArrayList<CalvinDiningService.Meal>();
                     for (CalvinDiningService.Meal meal: mealArray) {
-                        // Make time between events
-                        betweenEvents.setDuration(""); // TODO duration
-
-                        // Make event display item
-                        DisplayItem displayItem = new DisplayItem(
-                                meal,
-                                timeFormat.format(meal.getGregStartTime().getTime()),
-                                timeFormat.format(meal.getGregEndTime().getTime())
-                        );
-                        displayItems.add(betweenEvents);
-                        displayItems.add(displayItem);
+                        if (meal.getGregStartTime().get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR)) {
+                            todayMeal.add(meal);
+                        } else {
+                            tomorrowMeal.add(meal);
+                        }
                     }
-                    betweenEvents.setDuration("");
-                    displayItems.add(betweenEvents);
+
+                    makeDay("Today", todayMeal, timeFormat);
+                    makeDay("Tomorrow", tomorrowMeal, timeFormat);
+
+                    //Arrays.stream(mealArray).filter(m->m.getGregStartTime().get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR)).toArray();
+
+
                 }
                 // If no meals tell the user
                 // TODO make this better and make between events not use the display item class or not?
-                if (displayItems.size() == 0) {
-                    DisplayItem betweenEvents = new DisplayItem(
-                            null, null, null
-                    );
-                    betweenEvents.setDuration("THERE ARE NO MEALS TODAY");
+                else {
+                    DisplayItem betweenEvents = new DisplayItem("Could not find meals from Calvin's Server");
                     displayItems.add(betweenEvents);
                 }
                 notifyDataSetChanged(); // rerun getView to notice new changes
             }
         });
     }
+
 
     /**
      * @return count
@@ -207,10 +230,16 @@ public class EventListAdapter extends EventListObserver {
             timeLabel.set(true, displayItem.meal.getName(), displayItem.startTime, displayItem.endTime, displayItem.meal.getDescription());
             return timeLabel;
         } else {
-            // BetweenEvents
-            TimeLabelBetween timeLabelBetween = (TimeLabelBetween) layoutInflater.inflate(R.layout.time_label_between, parent, false);
-            timeLabelBetween.set(false, displayItem.duration);
-            return timeLabelBetween;
+            if (displayItem.day == null) {
+                // BetweenEvents
+                TimeLabelBetween timeLabelBetween = (TimeLabelBetween) layoutInflater.inflate(R.layout.time_label_between, parent, false);
+                timeLabelBetween.set(false);
+                return timeLabelBetween;
+            } else {
+                TimeLabelBetween timeLabelBetween = (TimeLabelBetween) layoutInflater.inflate(R.layout.time_label_between, parent, false);
+                timeLabelBetween.set(false, displayItem.day);
+                return timeLabelBetween;
+            }
         }
     }
 }
