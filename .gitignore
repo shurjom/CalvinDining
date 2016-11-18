@@ -1,0 +1,10 @@
+*.iml
+.gradle
+# http://stackoverflow.com/a/26336926/2948122
+# Because Android Studio uses Gradle, don't put .idea in VCS
+local.properties
+.idea
+.DS_Store
+build
+captures
+.externalNativeBuild
