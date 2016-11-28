@@ -11,15 +11,17 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    app:layout_collapseParallaxMultiplier="0.6">
+    app:layout_collapseParallaxMultiplier="0.6"
+    android:weightSum="1">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="226dp"
+        android:layout_height="80dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@android:drawable/sym_def_app_icon"
-        android:paddingLeft="40dp" />
+        app:srcCompat="@drawable/icon"
+        android:paddingLeft="40dp"
+        android:layout_weight="2.90" />
 
     <TextView
         android:layout_width="match_parent"
@@ -27,13 +29,19 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Calvin Dining"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:paddingLeft="40dp" />
+        android:paddingLeft="40dp"
+        android:textStyle="normal|bold"
+        android:textAllCaps="false"
+        android:fontFamily="sans-serif"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="246dp"
         android:layout_height="wrap_content"
-        android:text="contact us at"
-        android:paddingLeft="50dp" />
+        android:text="May the food be with you"
+        android:paddingLeft="50dp"
+        android:padding="10dp"
+        android:layout_marginLeft="40dp" />
 
 </LinearLayout>
