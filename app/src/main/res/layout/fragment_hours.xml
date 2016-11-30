@@ -55,7 +55,8 @@
                     android:id="@+id/textView14"
                     android:layout_below="@+id/textView12"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="20dp" />
+                    android:layout_marginStart="20dp"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:text="Continental Breakfast - 9:00am - 10:30am"
@@ -63,7 +64,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView14"
                     android:layout_alignStart="@+id/textView14"
-                    android:id="@+id/textView15" />
+                    android:id="@+id/textView15"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:text="Lunch - 11:00am - 2:00pm"
@@ -71,7 +73,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView15"
                     android:layout_alignStart="@+id/textView15"
-                    android:id="@+id/textView19" />
+                    android:id="@+id/textView19"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                 android:text="Piazza and Salad Bar - 2:00pm - 4:45pm"
@@ -79,7 +82,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView19"
                     android:layout_alignStart="@+id/textView19"
-                    android:id="@+id/textView20" />
+                    android:id="@+id/textView20"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:text="Dinner - 4:45pm - 6:00pm"
@@ -87,7 +91,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView20"
                     android:layout_alignStart="@+id/textView20"
-                    android:id="@+id/textView21" />
+                    android:id="@+id/textView21"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                 android:text="Hot Breakfast - 7:15am - 9:00am"
@@ -95,7 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView22"
                 android:layout_alignStart="@+id/textView21"
-                android:id="@+id/textView23" />
+                android:id="@+id/textView23"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                 android:text="Continental Breakfast - 9:00am - 10:30am"
@@ -103,7 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView23"
                 android:layout_alignStart="@+id/textView23"
-                android:id="@+id/textView24" />
+                android:id="@+id/textView24"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                 android:text="Lunch - 11:00am - 2:00pm"
@@ -111,7 +118,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView24"
                 android:layout_alignStart="@+id/textView24"
-                android:id="@+id/textView25" />
+                android:id="@+id/textView25"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                 android:text="Dinner - Closed"
@@ -119,7 +127,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView25"
                 android:layout_alignStart="@+id/textView25"
-                android:id="@+id/textView26" />
+                android:id="@+id/textView26"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                 android:text="Saturday"
@@ -139,7 +148,8 @@
                 android:layout_below="@+id/textView27"
                 android:layout_alignEnd="@+id/textView27"
                 android:id="@+id/textView28"
-                android:layout_alignStart="@+id/textView26" />
+                android:layout_alignStart="@+id/textView26"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                 android:text="Sunday"
@@ -159,7 +169,8 @@
                 android:layout_below="@+id/textView30"
                 android:layout_alignStart="@+id/textView26"
                 android:id="@+id/textView31"
-                android:layout_alignEnd="@+id/textView24" />
+                android:layout_alignEnd="@+id/textView24"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                 android:text="Lunch - 11:45am - 1:30pm"
@@ -167,7 +178,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView31"
                 android:layout_alignStart="@+id/textView31"
-                android:id="@+id/textView32" />
+                android:id="@+id/textView32"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                 android:text="Dinner - 5:00pm - 7:00pm"
@@ -176,7 +188,8 @@
                 android:layout_below="@+id/textView32"
                 android:id="@+id/textView33"
                 android:layout_alignEnd="@+id/textView21"
-                android:layout_alignStart="@+id/textView32" />
+                android:layout_alignStart="@+id/textView32"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:text="Friday"
@@ -225,7 +238,8 @@
                     android:layout_below="@+id/textView36"
                     android:layout_alignStart="@+id/textView33"
                     android:id="@+id/textView37"
-                    android:paddingLeft="20dp" />
+                    android:paddingLeft="20dp"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:text="Dinner - 5:00pm - 7:00pm"
@@ -234,7 +248,8 @@
                     android:layout_below="@+id/textView37"
                     android:layout_alignStart="@+id/textView37"
                     android:id="@+id/textview38"
-                    android:paddingLeft="20dp" />
+                    android:paddingLeft="20dp"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:text="Saturday"
@@ -254,7 +269,8 @@
                     android:layout_below="@+id/textView39"
                     android:layout_alignStart="@+id/textview38"
                     android:id="@+id/textView40"
-                    android:paddingLeft="20dp" />
+                    android:paddingLeft="20dp"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:text="Lunch - 11:30am - 1:30pm"
@@ -263,7 +279,8 @@
                     android:layout_below="@+id/textView40"
                     android:layout_alignStart="@+id/textView40"
                     android:id="@+id/textView41"
-                    android:paddingLeft="20dp" />
+                    android:paddingLeft="20dp"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:text="Dinner - 4:45pm - 6:15pm"
@@ -272,7 +289,8 @@
                     android:layout_below="@+id/textView41"
                     android:layout_alignStart="@+id/textView41"
                     android:id="@+id/textView42"
-                    android:paddingLeft="20dp" />
+                    android:paddingLeft="20dp"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:text="Sunday"
@@ -292,7 +310,8 @@
                     android:layout_below="@+id/textView43"
                     android:layout_alignStart="@+id/textView42"
                     android:id="@+id/textView44"
-                    android:paddingLeft="20dp" />
+                    android:paddingLeft="20dp"
+                    android:textColor="@android:color/black" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -328,7 +347,8 @@
                     android:layout_below="@+id/textView50"
                     android:layout_alignStart="@+id/textView44"
                     android:id="@+id/textView51"
-                    android:paddingLeft="20dp" />
+                    android:paddingLeft="20dp"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:text="Saturday"
@@ -348,7 +368,8 @@
                     android:layout_below="@+id/textView53"
                     android:layout_alignStart="@+id/textView52"
                     android:id="@+id/textView54"
-                    android:paddingLeft="20dp" />
+                    android:paddingLeft="20dp"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:text="Sunday"
@@ -368,7 +389,8 @@
                     android:layout_below="@+id/textView57"
                     android:layout_alignStart="@+id/textView54"
                     android:id="@+id/textView58"
-                    android:paddingLeft="20dp" />
+                    android:paddingLeft="20dp"
+                    android:textColor="@android:color/black" />
 
                 <TextView
                     android:text="Deli Hours - 11:00am - 8:00pm (5:00pm Friday)"
@@ -377,7 +399,8 @@
                     android:id="@+id/textView52"
                     android:layout_below="@+id/textView51"
                     android:layout_alignStart="@+id/textView51"
-                    android:paddingLeft="20dp" />
+                    android:paddingLeft="20dp"
+                    android:textColor="@android:color/black" />
             </RelativeLayout>
 
 

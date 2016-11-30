@@ -1,58 +1,116 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.calvin.kpb23students.calvindining.fragments.Prices"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@android:color/black">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:text="Commons and KnollCrest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:id="@+id/textView8"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="339dp"
+        android:layout_height="277dp"
+        android:background="@android:color/holo_blue_light"
+        android:padding="10dp"
+        android:elevation="10dp">
 
-    <TextView
-        android:text="Guest Cost per Meal:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView8"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="11dp"
-        android:id="@+id/textView9"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+        <TextView
+            android:text="Children rates:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:id="@+id/textView10"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:layout_below="@+id/textView4"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:textColor="@android:color/black" />
 
-    <TextView
-        android:text="Children rates:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:id="@+id/textView10"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="15dp" />
+        <TextView
+            android:text="0–4 years—Free\n5–11 years—1/2 off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:id="@+id/textView11"
+            android:layout_below="@+id/textView10"
+            android:layout_alignEnd="@+id/textView4"
+            android:textColor="@android:color/black" />
 
-    <TextView
-        android:text="Hot Breakfast—$6.90\nContinental—$5.15\nLunch—$8.75\nDinner—$10.50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView4"
-        android:layout_marginTop="11dp"
-        android:layout_below="@+id/textView9"
-        android:layout_alignStart="@+id/textView10" />
+        <TextView
+            android:text="Hot Breakfast—$6.90\nContinental—$5.15\nLunch—$8.75\nDinner—$10.50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/textView9"
+            android:layout_alignEnd="@+id/textView9"
+            android:textColor="@android:color/black" />
 
-    <TextView
-        android:text="0–4 years—Free\n5–11 years—1/2 off"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:id="@+id/textView11"
-        android:layout_below="@+id/textView10"
-        android:layout_alignEnd="@+id/textView4" />
-</RelativeLayout>
+        <TextView
+            android:text="Commons and KnollCrest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView8"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Guest Cost per Meal:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView9"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:layout_below="@+id/textView8"
+            android:layout_alignStart="@+id/textView10"
+            android:layout_marginTop="13dp"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray">
+
+        <Button
+            android:text="Off Campus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/offCampus"
+            android:textStyle="normal|bold"
+            android:background="@android:color/holo_green_light"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@+id/onCampus"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp" />
+
+        <Button
+            android:text="On Campus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/onCampus"
+            android:textStyle="normal|bold"
+            android:background="@android:color/holo_orange_light"
+            android:layout_marginTop="28dp"
+            android:autoLink="web"
+            android:layout_below="@+id/textView6"
+            android:layout_alignStart="@+id/offCampus"
+            android:layout_alignEnd="@+id/offCampus" />
+
+        <TextView
+            android:text="Students"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:textStyle="normal|bold"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+</LinearLayout>

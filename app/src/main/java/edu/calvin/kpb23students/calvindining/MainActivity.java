@@ -51,16 +51,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setCheckedItem(R.id.nav_daily_view); // set nav daily view to be selected on startup
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        // Google maps
-        // Pushing MapView Fragment
-        /*
-        android.app.Fragment fragment = android.app.Fragment.instantiate(this, MapViewFragment.class.getName());
-        android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.fra, fragment);
-        ft.commit();*/
-
-
         // Start with daily view opened
         openFragment(new DailyViewTabber());
     }
@@ -87,7 +77,8 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            drawer.openDrawer(GravityCompat.START);
         }
     }
 
@@ -160,4 +151,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

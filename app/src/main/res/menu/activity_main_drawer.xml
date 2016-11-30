@@ -9,7 +9,7 @@
             android:id="@+id/nav_daily_view" />
         <item
             android:icon="@drawable/ic_menu_calender"
-            android:title="Calendar"
+            android:title="Meal Count"
             android:id="@+id/nav_calendar" />
         <item
             android:id="@+id/nav_hours"

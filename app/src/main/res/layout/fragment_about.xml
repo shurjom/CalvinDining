@@ -9,7 +9,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="@android:color/holo_green_light">
 
         <TextView
             android:text="The Calvin Dining Hall App aims to bring you all the necessary info you need about the food at Calvin College. Use it to find out the meals being served today, keep track of your meals, and even take part in polls to decide what will be served in the future! We hope you enjoy using out app. "
@@ -17,7 +18,8 @@
             android:layout_height="108dp"
             android:id="@+id/textView3"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:text="Contact us at kpgbrink@gmail.com"
@@ -27,7 +29,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="59dp"
             android:layout_marginTop="36dp"
-            android:id="@+id/textView5" />
+            android:id="@+id/textView5"
+            android:textColor="@android:color/black" />
 
     </RelativeLayout>
 

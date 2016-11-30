@@ -1,14 +1,95 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.calvin.kpb23students.calvindining.fragments.Vote">
+    tools:context="edu.calvin.kpb23students.calvindining.fragments.Vote"
+    android:background="@android:color/holo_blue_dark">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:text="Vote"
+    <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView6" />
-</FrameLayout>
+        android:id="@+id/ratingBar"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="40dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Rate your previous meal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/ratingBar" />
+
+    <TextView
+        android:text="Write a suggestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:id="@+id/textView16"
+        android:layout_below="@+id/ratingBar"
+        android:layout_alignStart="@+id/ratingBar" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="13dp"
+        android:id="@+id/editText"
+        android:layout_below="@+id/textView16"
+        android:layout_alignStart="@+id/textView16"
+        android:layout_marginStart="18dp"
+        android:hint="Feedback" />
+
+    <RadioButton
+        android:text="Lettuce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText"
+        android:layout_alignEnd="@+id/textView16"
+        android:layout_marginTop="51dp"
+        android:id="@+id/radioButton2" />
+
+    <TextView
+        android:text="Check what you like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:id="@+id/textView17"
+        android:layout_below="@+id/editText"
+        android:layout_alignStart="@+id/textView16" />
+
+    <RadioButton
+        android:text="Tomatoe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:id="@+id/radioButton3"
+        android:layout_below="@+id/radioButton2"
+        android:layout_alignStart="@+id/radioButton2" />
+
+    <RadioButton
+        android:text="Cheese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:id="@+id/radioButton"
+        android:layout_below="@+id/radioButton3"
+        android:layout_alignStart="@+id/radioButton3" />
+
+    <Button
+        android:text="Send Review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioButton"
+        android:layout_alignStart="@+id/radioButton"
+        android:layout_marginTop="58dp"
+        android:id="@+id/button" />
+
+</RelativeLayout>

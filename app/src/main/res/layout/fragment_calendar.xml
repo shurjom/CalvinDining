@@ -2,24 +2,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.calvin.kpb23students.calvindining.fragments.Calendar">
+    tools:context="edu.calvin.kpb23students.calvindining.fragments.Calendar"
+    android:background="@android:color/holo_blue_light">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <CalendarView
+    <Button
+        android:text="Add Meal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/addMeal"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/subtractMeal"
+        android:layout_alignEnd="@+id/subtractMeal" />
+
+    <Button
+        android:text="Subtract Meal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/mealCount"
+        android:layout_marginBottom="83dp"
+        android:id="@+id/subtractMeal"
+        android:layout_alignEnd="@+id/mealCount" />
+
+    <TextView
+        android:text="Meals Left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mealLeft"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="normal|bold"
+        android:textSize="24sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/calendarView"
+        android:layout_marginTop="21dp"
         android:layout_alignParentEnd="true" />
 
-    <Spinner
-        android:layout_width="match_parent"
+    <EditText
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/calendarView"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/mealCount"
+        android:layout_marginTop="17dp"
+        android:textAlignment="center"
+        android:hint="Set Meal Count Here"
+        android:textSize="22sp"
+        android:layout_below="@+id/mealLeft"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Meal Difference:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        android:layout_marginBottom="47dp"
+        android:layout_above="@+id/addMeal"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="33dp"
-        android:id="@+id/spinner" />
+        android:layout_marginStart="32dp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView7"
+        android:layout_toEndOf="@+id/textView7"
+        android:layout_marginStart="23dp"
+        android:id="@+id/mealDifference"
+        android:textColor="@android:color/black" />
 
 </RelativeLayout>
