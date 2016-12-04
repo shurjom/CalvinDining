@@ -1,0 +1,80 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.calvin.kpb23students.calvindining.fragments.Login">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_orange_light">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:layout_marginTop="23dp"
+            android:id="@+id/password"
+            android:hint="password"
+            android:layout_below="@+id/username"
+            android:layout_alignStart="@+id/username"
+            android:imeOptions="actionGo" />
+
+        <Button
+            android:text="Sign Up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="53dp"
+            android:id="@+id/signUp"
+            android:textStyle="normal|bold"
+            android:layout_below="@+id/password"
+            android:layout_alignEnd="@+id/password"
+            android:layout_alignStart="@+id/password" />
+
+        <Button
+            android:text="Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/login"
+            android:layout_marginTop="13dp"
+            android:textStyle="normal|bold"
+            android:layout_below="@+id/signUp"
+            android:layout_alignStart="@+id/signUp"
+            android:layout_alignEnd="@+id/signUp" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="46dp"
+            android:id="@+id/displayUserName"
+            tools:text="Logged in as..."
+            android:layout_above="@+id/password"
+            android:layout_alignStart="@+id/username" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginTop="133dp"
+            android:id="@+id/username"
+            android:hint="username"
+            android:inputType="textNoSuggestions"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:text="Logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login"
+            android:layout_marginTop="13dp"
+            android:id="@+id/logOut"
+            android:layout_alignEnd="@+id/login"
+            android:layout_alignStart="@+id/login"
+            android:textStyle="normal|bold" />
+    </RelativeLayout>
+</FrameLayout>

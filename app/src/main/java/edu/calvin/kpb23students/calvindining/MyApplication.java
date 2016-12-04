@@ -1,6 +1,7 @@
 package edu.calvin.kpb23students.calvindining;
 
 import android.app.Application;
+import android.content.Context;
 
 import java.io.File;
 
@@ -21,21 +22,27 @@ public class MyApplication extends Application {
 
     private static MyApplication myApplication;
     private Retrofit retrofit;
+    private Retrofit retrofitJava;
     private CalvinDiningService calvinDiningService;
+    private JavaService javaService;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         myApplication = this;
-        String BASE_URL = "http://sam.ohnopub.net/~kpgbrink/CalvinDiningServer/server.cgi/";
+
+
+        // My server
+
+        String BASE_URL_CALVIN_DINING = "http://sam.ohnopub.net/~kpgbrink/CalvinDiningServer/server.cgi/";
 
         // http://stackoverflow.com/a/23503804/2948122
         File httpCacheDirectory = new File(getApplicationContext().getCacheDir(), "responses");
         int cacheSize = 10 * 1024 * 1024; // 10 MiB
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(BASE_URL_CALVIN_DINING)
                 .client(new OkHttpClient.Builder()
                     .cache(new Cache(httpCacheDirectory, cacheSize))
                     .build())
@@ -43,6 +50,23 @@ public class MyApplication extends Application {
                 .build();
 
         calvinDiningService = new CalvinDiningService(retrofit);
+
+        // Calvin's server
+
+        String BASE_URL_JAVA_SERVICE = "http://cs262.cs.calvin.edu:8086/Dining/";
+
+        File httpCacheDirectoryJava = new File(getApplicationContext().getCacheDir(), "responses");
+        int cacheSizeJava = 10 * 1024 * 1024; // 10 MiB
+
+        retrofitJava = new Retrofit.Builder()
+                .baseUrl(BASE_URL_JAVA_SERVICE)
+                .client(new OkHttpClient.Builder()
+                        .cache(new Cache(httpCacheDirectoryJava, cacheSizeJava))
+                        .build())
+                .addConverterFactory(MoshiConverterFactory.create())
+                .build();
+
+        javaService = new JavaService(retrofitJava, getApplicationContext().getSharedPreferences("login", Context.MODE_PRIVATE), getApplicationContext());
     }
 
     public static MyApplication getMyApplication() {
@@ -56,5 +80,7 @@ public class MyApplication extends Application {
     public CalvinDiningService getCalvinDiningService() {
         return calvinDiningService;
     }
+
+    public JavaService getJavaService() { return javaService; }
 
 }

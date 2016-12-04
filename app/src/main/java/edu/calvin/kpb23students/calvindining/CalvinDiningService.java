@@ -100,8 +100,6 @@ public class CalvinDiningService extends Observable{
     private interface InterfaceService {
         @GET("venues") // TODO make this venues on server and here
         Call<List<Venue>> venues();
-
-
     }
 
     public void check() {

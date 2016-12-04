@@ -16,6 +16,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Observable;
+import java.util.Observer;
+
+import edu.calvin.kpb23students.calvindining.JavaService;
+import edu.calvin.kpb23students.calvindining.MyApplication;
 import edu.calvin.kpb23students.calvindining.R;
 
 
@@ -26,36 +31,39 @@ import edu.calvin.kpb23students.calvindining.R;
  * </p>
  */
 public class Calendar extends Fragment {
+    private JavaService javaService;
+    private Observer javaServiceObserver;
+    boolean getMealCount = true;
+
     public Calendar() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Calendar.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Calendar newInstance(String param1, String param2) {
-        Calendar fragment = new Calendar();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
-
         RelativeLayout relativeLayout = (RelativeLayout) inflater.inflate(R.layout.fragment_calendar, container, false);
-
         // Edit Text of mealCount
         final TextView mealDifference = (TextView) relativeLayout.findViewById(R.id.mealDifference);
         final EditText mealCount = (EditText) relativeLayout.findViewById(R.id.mealCount);
+
+        javaServiceObserver = new Observer() {
+            @Override
+            public void update(Observable o, Object arg) {
+                // only load initially when loading view to avoid creating loops
+                if (getMealCount && javaService.getUser() != null) {
+                    mealCount.setText(Integer.toString(javaService.getUser().getMealCount()));
+                    getMealCount = false;
+                }
+            }
+        };
+
+        javaService = MyApplication.getMyApplication().getJavaService();
+        javaService.addObserver(javaServiceObserver);
+        javaServiceObserver.update(null, null);
+
+
+
         mealCount.addTextChangedListener(new TextWatcher() {
             private int mealPastSet = 0;
             @Override
@@ -69,6 +77,7 @@ public class Calendar extends Fragment {
                     mealDifference.setText("0");
                 }
                 mealPastSet = getTextInt(mealCount);
+                javaService.setMeal(mealPastSet);
             }
 
             @Override
@@ -136,5 +145,11 @@ public class Calendar extends Fragment {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onDestroy() {
+        javaService.deleteObserver(javaServiceObserver);
+        super.onDestroy();
     }
 }
