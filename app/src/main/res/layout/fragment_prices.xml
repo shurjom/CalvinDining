@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:orientation="vertical"
-        android:layout_width="339dp"
+        android:layout_width="match_parent"
         android:layout_height="277dp"
         android:background="@android:color/holo_blue_light"
         android:padding="10dp"
@@ -101,7 +101,7 @@
             android:layout_alignEnd="@+id/offCampus" />
 
         <TextView
-            android:text="Meal Plans"
+            android:text="Info on Meal Plans"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView6"
