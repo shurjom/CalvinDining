@@ -1,0 +1,354 @@
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.calvin.kpb23students.calvindining.fragments.Help">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:weightSum="1"
+            android:layout_margin="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="@android:color/black"
+            android:elevation="24dp"
+            android:scrollbars="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_orange_light"
+                android:elevation="10dp"
+                android:layout_weight="0.10"
+                android:padding="10dp"
+                android:focusable="false">
+
+                <TextView
+                    android:text="Daily Menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView13"
+                    android:textAppearance="@android:style/TextAppearance.Material.Large"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:text="You can use the Daily View to see when dining halls are open and what they are serving."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView15"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@+id/textView13"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:text="There are tabs at the top that show viewable dining halls. You either swipe or tap the tabs at the top to switch to different dining halls "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView20"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@+id/textView19"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:text="Switching Dining Halls:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView19"
+                    android:textColor="@android:color/black"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                    android:layout_below="@+id/textView15"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="11dp" />
+
+                <TextView
+                    android:text="Viewing Information:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView21"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@+id/textView20"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="13dp" />
+
+                <TextView
+                    android:text="In each tab, today’s and tomorrow’s menu is shown and each meal is separated into blocks. Each meal has its own name and times. It also displays what is on the menu."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView22"
+                    android:textAppearance="@android:style/TextAppearance.Material.Small"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@+id/textView21"
+                    android:layout_alignParentStart="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="5dp"
+                android:background="@android:color/holo_blue_light"
+                android:padding="10dp">
+
+                <TextView
+                    android:text="Login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView34"
+                    android:layout_below="@+id/textView33"
+                    android:layout_alignParentStart="true"
+                    android:textAppearance="@android:style/TextAppearance.Material.Large"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:text="You can log into the Calvin Dining app to save your meal count and participate in polls."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView34"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/textView36"
+                    android:textAppearance="@android:style/TextAppearance.Material.Small"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="2. Choose a Password and enter it into the Password field."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView38"
+                    android:layout_below="@+id/textView35"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="3. Press the sign up button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView38"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/textView45"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="To create a user:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView29"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@+id/textView36"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="12dp" />
+
+                <TextView
+                    android:text="To sign in to your account:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:id="@+id/textView47"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@+id/textView45"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:text="1. Choose a Username and enter it into the Username field."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView35"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@+id/textView29"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:text="1. Enter your Username into the Username field."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView55"
+                    android:layout_below="@+id/textView47"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="2. Enter your Password into the Password field."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView56"
+                    android:layout_below="@+id/textView55"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="3. Press the login button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView56"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/textView59"
+                    android:textColor="@android:color/black" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_green_light"
+                android:padding="10dp">
+
+                <TextView
+                    android:text="Meal Count:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView49"
+                    android:textAppearance="@android:style/TextAppearance.Material.Large"
+                    android:layout_below="@+id/textView44"
+                    android:layout_alignParentStart="true"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:text="You can use the meal count feature of the Calvin Dining Hall app to keep track of the number of meals you have left and add/deduct meals."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView49"
+                    android:id="@+id/textView50"
+                    android:textAppearance="@android:style/TextAppearance.Material.Small"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="To use:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView50"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="14dp"
+                    android:id="@+id/textView60"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="1. Enter the number of meals you have in the Meals left box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView60"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/textView61"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="2. Add or deduct the meals you desire every time one is used.(The meals left will be automatically stored and be available the next time you use the app.) "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView61"
+                    android:id="@+id/textView62"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@android:color/black" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="440dp"
+                android:background="@android:color/holo_orange_light"
+                android:padding="10dp">
+
+                <TextView
+                    android:text="Polls:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView63"
+                    android:textAppearance="@android:style/TextAppearance.Material.Large"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:text="The Polling page can be used to give feedback to the dining hall by responding to their questions."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView64"
+                    android:layout_below="@+id/textView63"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:text="To Use:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView64"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="14dp"
+                    android:id="@+id/textView68"
+                    android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView65"
+                    android:textColor="@android:color/black"
+                    android:text="1. In order to use the polling system you must be a logged in user. If you have not created a login, please go to the login page."
+                    android:layout_below="@+id/textView68"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:text="3. The page will present the current days question and between 2 to 4 responses that can be given for it."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView69"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@+id/textView66"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="11dp" />
+
+                <TextView
+                    android:text="2. At the top of the page you are able to select between the current polls for both the Knollcrest and Commons Dining halls.  You can select these by either taping on the names or swiping left and right on the page."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView66"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@+id/textView65"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="13dp" />
+
+                <TextView
+                    android:text="4. You can select the response you want by tapping on it. Only one response can be selected for each poll."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView70"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@+id/textView69"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="12dp" />
+
+                <TextView
+                    android:text="5. To submit your response hit the submit button after you have selected a response. "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView71"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@+id/textView70"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="12dp" />
+
+                <TextView
+                    android:text="6. Once submitted, results for that  poll will be displayed underneath each response and you will not be able to submit a response again for that poll."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView72"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@+id/textView71"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

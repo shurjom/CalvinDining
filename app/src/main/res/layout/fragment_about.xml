@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     tools:context="edu.calvin.kpb23students.calvindining.fragments.About">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <RelativeLayout
         android:layout_width="match_parent"
