@@ -1,95 +1,182 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.calvin.kpb23students.calvindining.fragments.Vote"
-    android:background="@android:color/holo_blue_dark">
+    android:background="@android:color/holo_blue_dark"
+    app:layout_scrollFlags="scroll">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"
-        android:layout_marginTop="18dp"
-        android:layout_marginStart="40dp"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true" />
-
     <TextView
-        android:text="Rate your previous meal"
-        android:layout_width="wrap_content"
+        android:text="Please Login To Vote"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="18dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/ratingBar" />
+        android:id="@+id/userName"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/black"
+        android:padding="10dp"
+        android:textSize="25sp" />
 
-    <TextView
-        android:text="Write a suggestion"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:id="@+id/textView16"
-        android:layout_below="@+id/ratingBar"
-        android:layout_alignStart="@+id/ratingBar" />
+        android:background="@android:color/holo_orange_dark">
 
-    <EditText
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="Commons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView74"
+                android:textSize="30sp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:text="Loading Question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/commonsQuestion"
+                android:padding="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/commonsRadioGroup">
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/commons1"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/commons2"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/commons3"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/commons4"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:text="Submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/commonsButton"
+                    android:layout_weight="1" />
+            </RadioGroup>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_marginTop="13dp"
-        android:id="@+id/editText"
-        android:layout_below="@+id/textView16"
-        android:layout_alignStart="@+id/textView16"
-        android:layout_marginStart="18dp"
-        android:hint="Feedback" />
+        android:layout_marginTop="32dp"
+        android:background="@android:color/holo_green_light">
 
-    <RadioButton
-        android:text="Lettuce"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_alignEnd="@+id/textView16"
-        android:layout_marginTop="51dp"
-        android:id="@+id/radioButton2" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-    <TextView
-        android:text="Check what you like"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:id="@+id/textView17"
-        android:layout_below="@+id/editText"
-        android:layout_alignStart="@+id/textView16" />
+            <TextView
+                android:text="Knollcrest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView76"
+                android:textSize="30sp"
+                android:textColor="@android:color/black" />
 
-    <RadioButton
-        android:text="Tomatoe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
-        android:id="@+id/radioButton3"
-        android:layout_below="@+id/radioButton2"
-        android:layout_alignStart="@+id/radioButton2" />
+            <TextView
+                android:text="Loading Question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/knollQuestion"
+                android:padding="10dp" />
 
-    <RadioButton
-        android:text="Cheese"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:id="@+id/radioButton"
-        android:layout_below="@+id/radioButton3"
-        android:layout_alignStart="@+id/radioButton3" />
+        </LinearLayout>
 
-    <Button
-        android:text="Send Review"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/radioButton"
-        android:layout_alignStart="@+id/radioButton"
-        android:layout_marginTop="58dp"
-        android:id="@+id/button" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-</RelativeLayout>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/knollRadioGroup">
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/knoll1"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/knoll2"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/knoll3"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/knoll4"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:text="Submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/knollButton"
+                    android:layout_weight="1" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

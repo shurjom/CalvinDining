@@ -27,6 +27,8 @@ public class JavaService extends Observable{
     private final InterfaceService service;
     private List<CalvinDiningService.Venue> venues = new ArrayList<>();
     private User user = new User();
+    private Poll commonsPoll = new Poll();
+    private Poll knollPoll = new Poll();
     private String username, password;
     private final SharedPreferences sharedPreferences;
     private final String USERNAME_KEY = "username";
@@ -81,6 +83,35 @@ public class JavaService extends Observable{
         }
     }
 
+    public static class Poll {
+        private int id = 0;
+        private String question = "";
+        private String questionType = "";
+        private String option1 = "";
+        private String option2 = "";
+        private String option3 = "";
+        private String option4 = "";
+
+        public Poll(){}
+
+        public Poll(int id, String question, String option1, String option2, String option3, String option4) {
+            this.id = id;
+            this.question = question;
+            this.option1 = option1;
+            this.option2 = option2;
+            this.option3 = option3;
+            this.option4 = option4;
+        }
+
+        public int getId() { return id; }
+
+        public String getQuestion() { return question; }
+        public String getOption1() { return option1; }
+        public String getOption2() { return option2; }
+        public String getOption3() { return option3; }
+        public String getOption4() { return option4; }
+    }
+
     private interface InterfaceService {
         @GET("user/{user}")
         Call<User> user(@Path("user") String username);
@@ -90,6 +121,9 @@ public class JavaService extends Observable{
 
         @PUT("users/{id}/meals")
         Call<Integer> setMeal(@Path("id") int id, @Body int mealCount);
+
+        @GET("polls/{venueName}/new")
+        Call<List<Poll>> getPoll(@Path("venueName") String venueName);
     }
 
     public void setMeal(int mealCount) {
@@ -116,6 +150,10 @@ public class JavaService extends Observable{
     public User getUser() {
         return user;
     }
+
+    public Poll getCommonsPoll() { return commonsPoll; }
+
+    public Poll getKnollPoll() { return knollPoll; }
 
     public void check() {
         Log.v("x", "userName: " + username);
@@ -148,6 +186,36 @@ public class JavaService extends Observable{
                 Log.v("x", "get User failed failed: " + t + " :oh no.");
             }
         });
+
+        for (final String venueId : new String[]{ "commons", "knollcrest"}) {
+            service.getPoll(venueId).enqueue(new Callback<List<Poll>>() {
+                @Override
+                public void onResponse(Call<List<Poll>> call, final Response<List<Poll>> response) {
+                    new Handler(context.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (response.body().size() < 1) {
+                                return; // Don't crash if the server has no new polls
+                            }
+                            Poll poll = response.body().get(0);
+                            if (venueId == "commons") {
+                                commonsPoll = poll;
+                            } else {
+                                knollPoll = poll;
+                            }
+
+                            setChanged();
+                            notifyObservers();
+                        }
+                    });
+                }
+
+                @Override
+                public void onFailure(Call<List<Poll>> call, Throwable t) {
+                    Log.v("x", "get Poll failed failed: " + t + " :oh no.");
+                }
+            });
+        }
     }
 
     public void setLogin(String username, String password) {
