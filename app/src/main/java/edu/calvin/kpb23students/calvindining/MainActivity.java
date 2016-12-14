@@ -1,6 +1,5 @@
 package edu.calvin.kpb23students.calvindining;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,12 +14,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import edu.calvin.kpb23students.calvindining.fragments.About;
-import edu.calvin.kpb23students.calvindining.fragments.Calendar;
+import edu.calvin.kpb23students.calvindining.fragments.MealCount;
 import edu.calvin.kpb23students.calvindining.fragments.DailyView.DailyViewTabber;
 import edu.calvin.kpb23students.calvindining.fragments.Help;
 import edu.calvin.kpb23students.calvindining.fragments.Hours;
 import edu.calvin.kpb23students.calvindining.fragments.Login;
-import edu.calvin.kpb23students.calvindining.fragments.MapViewFragment;
 import edu.calvin.kpb23students.calvindining.fragments.MapViewFragment;
 import edu.calvin.kpb23students.calvindining.fragments.Prices;
 import edu.calvin.kpb23students.calvindining.fragments.Vote;
@@ -133,7 +131,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_daily_view) {
             openFragment(new DailyViewTabber());
         } else if (id == R.id.nav_calendar) {
-            openFragment(new Calendar());
+            openFragment(new MealCount());
         } else if (id == R.id.nav_hours) {
             openFragment(new Hours());
         } else if (id == R.id.nav_prices) {

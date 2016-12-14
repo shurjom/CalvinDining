@@ -12,14 +12,15 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:padding="5dp"
             android:weightSum="1"
             android:layout_margin="0dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginBottom="200dp"
             android:background="@android:color/black"
             android:elevation="24dp"
-            android:scrollbars="vertical">
+            android:scrollbars="vertical"
+            android:layout_height="match_parent"
+            android:paddingBottom="200dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -253,7 +254,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="440dp"
+                android:layout_height="match_parent"
                 android:background="@android:color/holo_orange_light"
                 android:padding="10dp">
 
@@ -337,14 +338,17 @@
                     android:layout_marginTop="12dp" />
 
                 <TextView
-                    android:text="6. Once submitted, results for that  poll will be displayed underneath each response and you will not be able to submit a response again for that poll."
+                    android:text="6. Once submitted, results for that  poll will be displayed underneath each response and you will not be able to submit a response again for that poll. \n \n \n \n"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView72"
                     android:textColor="@android:color/black"
+                    android:paddingBottom="0dp"
                     android:layout_below="@+id/textView71"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="17dp"
+                    android:layout_alignParentBottom="true" />
+
             </RelativeLayout>
 
 

@@ -167,7 +167,7 @@ public class EventListAdapter extends EventListObserver {
                     makeDay("Today", todayMeal, timeFormat);
                     makeDay("Tomorrow", tomorrowMeal, timeFormat);
 
-                    //Arrays.stream(mealArray).filter(m->m.getGregStartTime().get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR)).toArray();
+                    //Arrays.stream(mealArray).filter(m->m.getGregStartTime().get(MealCount.DAY_OF_YEAR) == today.get(MealCount.DAY_OF_YEAR)).toArray();
 
 
                 }
