@@ -103,6 +103,17 @@ public class Vote extends Fragment {
                 knoll2.setText(knollPoll.getOption2());
                 knoll3.setText(knollPoll.getOption3());
                 knoll4.setText(knollPoll.getOption4());
+                
+                for (RadioButton rb : new RadioButton[] {
+                        commons1, commons2, commons3, commons4,
+                        knoll1, knoll2, knoll3, knoll4,
+                }) {
+                    if (rb.getText().equals(" 0%")) {
+                        rb.setVisibility(View.GONE);
+                    } else {
+                        rb.setVisibility(View.VISIBLE);
+                    }
+                }
             }
         };
 

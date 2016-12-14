@@ -45,7 +45,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/commonsQuestion"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textStyle="normal|bold"
+                android:textColor="@android:color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -124,7 +126,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/knollQuestion"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textStyle="normal|bold"
+                android:textColor="@android:color/black" />
 
         </LinearLayout>
 
