@@ -110,6 +110,25 @@ public class JavaService extends Observable{
         public String getOption2() { return option2; }
         public String getOption3() { return option3; }
         public String getOption4() { return option4; }
+        public void setOption1(String value) { option1 = value; }
+        public void setOption2(String value) { option2 = value; }
+        public void setOption3(String value) { option3 = value; }
+        public void setOption4(String value) { option4 = value; }
+    }
+
+
+    private static class PollResponse {
+        private int pollID, personID;
+        private boolean answer1, answer2, answer3, answer4;
+
+        public PollResponse(int pollID, int personID, boolean answer1, boolean answer2, boolean answer3, boolean answer4) {
+            this.pollID = pollID;
+            this.personID = personID;
+            this.answer1 = answer1;
+            this.answer2 = answer2;
+            this.answer3 = answer3;
+            this.answer4 = answer4;
+        }
     }
 
     private interface InterfaceService {
@@ -124,6 +143,12 @@ public class JavaService extends Observable{
 
         @GET("polls/{venueName}/new")
         Call<List<Poll>> getPoll(@Path("venueName") String venueName);
+
+        @GET("responses/{id}/stats")
+        Call<double[]> getResponsesStats(@Path("id") int pollId);
+
+        @POST("responses")
+        Call<Void> postPoll(@Body PollResponse response);
     }
 
     public void setMeal(int mealCount) {
@@ -191,23 +216,44 @@ public class JavaService extends Observable{
             service.getPoll(venueId).enqueue(new Callback<List<Poll>>() {
                 @Override
                 public void onResponse(Call<List<Poll>> call, final Response<List<Poll>> response) {
-                    new Handler(context.getMainLooper()).post(new Runnable() {
-                        @Override
-                        public void run() {
+
                             if (response.body().size() < 1) {
                                 return; // Don't crash if the server has no new polls
                             }
-                            Poll poll = response.body().get(0);
-                            if (venueId == "commons") {
-                                commonsPoll = poll;
-                            } else {
-                                knollPoll = poll;
-                            }
 
-                            setChanged();
-                            notifyObservers();
-                        }
-                    });
+                            final Poll poll = response.body().get(0);
+                            service.getResponsesStats(poll.id).enqueue(new Callback<double[]>() {
+                                @Override
+                                public void onResponse(Call<double[]> call, Response<double[]> response) {
+                                    double[] stats = response.body();
+                                    if (stats == null) {
+                                        stats = new double[]{0,0,0,0};
+                                    }
+                                    poll.setOption1(poll.getOption1() + " " + ((int)stats[0]) + "%");
+                                    poll.setOption2(poll.getOption2() + " " + ((int)stats[1]) + "%");
+                                    poll.setOption3(poll.getOption3() + " " + ((int)stats[2]) + "%");
+                                    poll.setOption4(poll.getOption4() + " " + ((int)stats[3]) + "%");
+
+                                    new Handler(context.getMainLooper()).post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if (venueId == "commons") {
+                                                commonsPoll = poll;
+                                            } else {
+                                                knollPoll = poll;
+                                            }
+
+                                            setChanged();
+                                            notifyObservers();
+                                        }
+                                    });
+                                }
+
+                                @Override
+                                public void onFailure(Call<double[]> call, Throwable t) {
+                                    Log.v("x", "get Poll failed failed: " + t + " :oh no.");
+                                }
+                            });
                 }
 
                 @Override
@@ -243,6 +289,24 @@ public class JavaService extends Observable{
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 Log.v("x", "making User failed failed failed: " + t + " :oh no.");
+            }
+        });
+    }
+
+    public void submitPollResponse(Poll poll, boolean answer1, boolean answer2, boolean answer3, boolean answer4) {
+        PollResponse myResponse = new PollResponse(poll.getId(), user.getId(), answer1, answer2, answer3, answer4);
+        service.postPoll(myResponse).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                new Handler(context.getMainLooper()).post(new Runnable() {
+                    @Override public void run() {
+                        check();
+                    }});
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.v("x", "posting poll failed failed failed: " + t + " :oh no.");
             }
         });
     }

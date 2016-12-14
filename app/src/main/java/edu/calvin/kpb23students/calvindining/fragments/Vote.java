@@ -54,6 +54,15 @@ public class Vote extends Fragment {
         final RadioButton commons3 = (RadioButton) layout.findViewById(R.id.commons3);
         final RadioButton commons4 = (RadioButton) layout.findViewById(R.id.commons4);
 
+        // Button post vote http://stackoverflow.com/a/9838501/2948122
+        Button commonsButton = (Button) layout.findViewById(R.id.commonsButton);
+        commonsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                javaService.submitPollResponse(commonsPoll, commons1.isChecked(), commons2.isChecked(), commons3.isChecked(), commons4.isChecked());
+            }
+        });
+
 
         // get everything for knoll
         final TextView knollQuestion = (TextView) layout.findViewById(R.id.knollQuestion);
@@ -63,8 +72,14 @@ public class Vote extends Fragment {
         final RadioButton knoll3 = (RadioButton) layout.findViewById(R.id.knoll3);
         final RadioButton knoll4 = (RadioButton) layout.findViewById(R.id.knoll4);
         
-        // submit button
-        final Button commonsButton = (Button) layout.findViewById(R.id.commonsButton);
+        // Button post vote http://stackoverflow.com/a/9838501/2948122
+        Button knollButton = (Button) layout.findViewById(R.id.knollButton);
+        knollButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                javaService.submitPollResponse(knollPoll, knoll1.isChecked(), knoll2.isChecked(), knoll3.isChecked(), knoll4.isChecked());
+            }
+        });
 
         javaServiceObserver = new Observer() {
             @Override
