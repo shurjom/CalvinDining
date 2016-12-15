@@ -26,18 +26,36 @@ import edu.calvin.kpb23students.calvindining.MyApplication;
 import edu.calvin.kpb23students.calvindining.R;
 
 /**
- *
- **/
+ ** This handles logging in.
+ * <p>
+ *     Logging in uses the javaService to log into the Java Server that holds all the information about the users.
+ * </p>
+ * @author Kristofer Brink
+ * @version Fall, 2016
+ */
 public class Login extends Fragment {
     private JavaService javaService;
     private Observer javaServiceObserver;
     private boolean loggingIn = false;
     private boolean creatingUser = false;
 
+    /**
+     * Required empty public constructor
+     */
     public Login() {
         // Required empty public constructor
     }
 
+    /**
+     * Handles making things interactive when the view is created.
+     * <p>
+     *     This makes the buttons and the edit boxes make the user able to login, signin, or logout.
+     * </p>
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,6 +96,7 @@ public class Login extends Fragment {
         javaService = MyApplication.getMyApplication().getJavaService();
         javaService.addObserver(javaServiceObserver);
         javaServiceObserver.update(null, null);
+
 
         Button signUpButton = (Button) frameLayout.findViewById(R.id.signUp);
         signUpButton.setOnClickListener(new View.OnClickListener() {
@@ -120,12 +139,20 @@ public class Login extends Fragment {
         return frameLayout;
     }
 
+    /**
+     * javaServiceObserver must be destroyed
+     */
     @Override
     public void onDestroy() {
         javaService.deleteObserver(javaServiceObserver);
         super.onDestroy();
     }
 
+    /**
+     * This makes toasts where I want them
+     * @param toastMessage
+     * @param context
+     */
     private void makeToast(String toastMessage, Context context) {
         Toast toast = Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP,0,700);

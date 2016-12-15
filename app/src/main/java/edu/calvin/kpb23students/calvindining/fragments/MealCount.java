@@ -25,8 +25,10 @@ import edu.calvin.kpb23students.calvindining.R;
 
 /**
  * <p>
- *     This fragment shows the meal count
+ *     This fragment shows the meal count. If you are logged in it will automatically update the mealCount on the server whenever you subtract or add a meal.
  * </p>
+ * @author Kristofer Brink
+ * @version Fall, 2016
  */
 public class MealCount extends Fragment {
     private JavaService javaService;
@@ -37,6 +39,16 @@ public class MealCount extends Fragment {
         // Required empty public constructor
     }
 
+    /**
+     * Handles when the view is created.
+     * <p>
+     *     This makes the buttons work and handles getting information from the server.
+     * </p>
+     * @param inflater the inflater for displaying things
+     * @param container the container for displaying things
+     * @param savedInstanceState the saved instance state.
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
@@ -67,7 +79,9 @@ public class MealCount extends Fragment {
         javaServiceObserver.update(null, null);
 
 
-
+        /**
+         * When the text is change save the past meal
+         */
         mealCount.addTextChangedListener(new TextWatcher() {
             private int mealPastSet = 0;
             @Override
@@ -121,8 +135,8 @@ public class MealCount extends Fragment {
 
     /**
      * Makes Toast message for subtract and add at the same space at the top of the screen
-     * @param toastMessage
-     * @param container
+     * @param toastMessage the message to be displayed
+     * @param container neccessary for message to be displayed
      */
     private void makeToast(String toastMessage, ViewGroup container) {
         Toast toast = Toast.makeText(container.getContext(), toastMessage, Toast.LENGTH_SHORT);
@@ -131,9 +145,9 @@ public class MealCount extends Fragment {
     }
 
     /**
-     * Return string of meal count
-     * @param text
-     * @return
+     * Return the integer from the Textview
+     * @param text the Textview to get the int from
+     * @return int of the TextView
      */
     private int getTextInt(TextView text) {
         try {
@@ -143,6 +157,12 @@ public class MealCount extends Fragment {
         }
     }
 
+    /**
+     * Gets the initial message
+     * @param mealCount the EditText of the mealCount
+     * @param container ViewGroup
+     * @return boolean true if logged. false if not logged in
+     */
     private boolean initialMessage(EditText mealCount, ViewGroup container) {
         if ((mealCount.getText().toString()).matches("")) {
             makeToast("Please Set Initial Meal", container);
@@ -151,6 +171,9 @@ public class MealCount extends Fragment {
         return true;
     }
 
+    /**
+     * javaServiceObserver must be destroyed
+     */
     @Override
     public void onDestroy() {
         javaService.deleteObserver(javaServiceObserver);

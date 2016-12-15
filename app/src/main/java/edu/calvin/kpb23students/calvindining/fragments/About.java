@@ -15,15 +15,24 @@ import edu.calvin.kpb23students.calvindining.R;
  * <p>
  *     This fragment shows the about page
  * </p>
+ * @author Kristofer Brink
+ * @version Fall, 2016
  */
 public class About extends Fragment {
+    /**
+     * required empty constructor
+     */
     public About() {
         // Required empty public constructor
     }
 
-
-
-
+    /**
+     * This ties the layout of fragment_about to this fragment.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

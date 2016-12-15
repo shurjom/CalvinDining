@@ -18,16 +18,25 @@ import edu.calvin.kpb23students.calvindining.R;
      This class handles the daily view. It will show important things about the day to the user.
  * <p/>
  *
- * @author Kristofer
+ * @author Kristofer Brink
  * @version Fall, 2016
  */
 public class DailyView extends Fragment {
     final static String DININGVENUENAME = "diningName";
     private String diningVenueKey;
+
+    /**
+     * Required empty constructor
+     */
     public DailyView() {
         // Required empty public constructor
     }
 
+    /**
+     * Set up the dailyView
+     * @param diningVenueKey
+     * @return
+     */
     public static DailyView newInstance(String diningVenueKey) {
         DailyView fragment = new DailyView();
         Bundle bundle = new Bundle(2);
@@ -36,6 +45,10 @@ public class DailyView extends Fragment {
         return fragment ;
     }
 
+    /**
+     * handles on creation
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

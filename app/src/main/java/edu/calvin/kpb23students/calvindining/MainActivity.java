@@ -24,11 +24,12 @@ import edu.calvin.kpb23students.calvindining.fragments.Prices;
 import edu.calvin.kpb23students.calvindining.fragments.Vote;
 
 /**
+ * This is a Calvin Dining Hall app made for cs 262.
  * <p>
- * This is a Calvin Dining hall app made for cs 262
+ *      This app has multiple functions. It displays menus, shows important information, has login which makes you able to use voting and mealCounts.
  * <p/>
  *
- * @author Kristofer
+ * @author Kristofer Brink
  * @version Fall, 2016
  */
 public class MainActivity extends AppCompatActivity
@@ -94,27 +95,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    /**
-     * Handle the actionbar items when they are pressed.
-     * @param item action bar item pressed
-     * @return
-     */
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-//            startActivity(i);
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     /**
      * Handle menu items when they are pressed.

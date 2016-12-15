@@ -11,11 +11,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
 /**
+ * This sets up things that need to be used throughout the whole application.
  * <p>
- * This gets information from the server
- * <p/>
+ *     This sets up the services that are used for connecting to the 2 servers.
+ * </p>
  *
- * @author Kristofer
+ * @author Kristofer Brink
  * @version Fall, 2016
  */
 public class MyApplication extends Application {
@@ -25,6 +26,7 @@ public class MyApplication extends Application {
     private Retrofit retrofitJava;
     private CalvinDiningService calvinDiningService;
     private JavaService javaService;
+
 
     @Override
     public void onCreate() {
@@ -69,18 +71,32 @@ public class MyApplication extends Application {
         javaService = new JavaService(retrofitJava, getApplicationContext().getSharedPreferences("login", Context.MODE_PRIVATE), getApplicationContext());
     }
 
+    /**
+     * @return a MyApplication singleton used for accessing the different services that get information from the servers.
+     */
     public static MyApplication getMyApplication() {
         return myApplication;
     }
 
+    /**
+     * @return a Retrofit used for android's client
+     */
     public Retrofit getRetrofit() {
         return retrofit;
     }
 
+    /**
+     *
+     * @return calvinDiningService that gets information from Calvin's api
+     */
     public CalvinDiningService getCalvinDiningService() {
         return calvinDiningService;
     }
 
+    /**
+     *
+     * @return javaService that is used for logging in for mealCount and voting
+     */
     public JavaService getJavaService() { return javaService; }
 
 }

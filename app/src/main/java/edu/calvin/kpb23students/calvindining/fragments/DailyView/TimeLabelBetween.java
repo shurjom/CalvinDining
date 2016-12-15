@@ -15,11 +15,8 @@ import android.widget.TextView;
 import edu.calvin.kpb23students.calvindining.R;
 
 /**
- * <p>
- * Handles what is between events
- * <p/>
- *
- * @author Kristofer
+ *  Handles between events
+ * @author Kristofer Brink
  * @version Fall, 2016
  */
 public class TimeLabelBetween extends RelativeLayout{
@@ -105,7 +102,7 @@ public class TimeLabelBetween extends RelativeLayout{
     }
 
     /**
-     *
+     * Set boolean if the thing is current or not.
      * @param isCurrent
      */
     public void set(Boolean isCurrent) {
