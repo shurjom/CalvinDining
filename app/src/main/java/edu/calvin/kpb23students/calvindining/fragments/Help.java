@@ -12,18 +12,26 @@ import edu.calvin.kpb23students.calvindining.R;
 
 
 /**
- * <p>
- *     This fragment shows the about page
- * </p>
+ * This fragment shows hours
+ *
+ * @author Kyle Harkema
+ * @version Fall, 2016
  */
 public class Help extends Fragment {
+    /**
+     * Required empty constructor
+     */
     public Help() {
         // Required empty public constructor
     }
 
-
-
-
+    /**
+     * This ties the layout of fragment_help to this fragment.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

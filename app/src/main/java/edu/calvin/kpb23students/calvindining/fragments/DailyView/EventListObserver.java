@@ -5,14 +5,19 @@ import android.widget.BaseAdapter;
 
 /**
  * <p>
- * This handles Observers
+ * This handles Observers for daily view.
  * <p/>
  *
- * @author Kristofer
+ * @author Kristofer Brink
  * @version Fall, 2016
  */
 public abstract class EventListObserver extends BaseAdapter {
     private int observerCount;
+
+    /**
+     * registers a new Observer.
+     * @param observer Observer to be registered
+     */
     @Override
     public void registerDataSetObserver(DataSetObserver observer) {
         super.registerDataSetObserver(observer);
@@ -22,6 +27,10 @@ public abstract class EventListObserver extends BaseAdapter {
         }
     }
 
+    /**
+     * unregisters an Observer
+     * @param observer Observer to be unregistered
+     */
     @Override
     public void unregisterDataSetObserver(DataSetObserver observer) {
         super.unregisterDataSetObserver(observer);
@@ -33,7 +42,13 @@ public abstract class EventListObserver extends BaseAdapter {
         }
     }
 
+    /**
+     * Factory method to be overridden
+     */
     protected void gainedFirstDataSetObserver() {} // to be overridden
 
+    /**
+     * Factory method to be overriden
+     */
     protected void lostLastDataSetObserver() {} // to be overridden
 }

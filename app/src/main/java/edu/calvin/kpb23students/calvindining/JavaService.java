@@ -20,9 +20,11 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
- * Created by Kristofer on 2016-12-03.
+ * This is used to get information from the server that handles login, mealCount, and polls.
+ *
+ * @author Kristofer Brink
+ * @version Fall, 2016
  */
-
 public class JavaService extends Observable{
     private final InterfaceService service;
     private List<CalvinDiningService.Venue> venues = new ArrayList<>();
@@ -45,16 +47,29 @@ public class JavaService extends Observable{
         check();
     }
 
+    /**
+     * The user class is used by retrofit in order to make a user from the information given by the server
+     */
     public static class User {
         private String userName;
         private String password;
         private int mealCount;
         private int id;
 
+        /**
+         * empty User constructor
+         */
         public User() {
 
         }
 
+        /**
+         *
+         * @param userName name of the user
+         * @param password password of the user
+         * @param mealCount how many meals the user has left
+         * @param id the id of the user. This is used for polls and mealCounts.
+         */
         public User(String userName, String password, int mealCount, int id) {
             this.userName = userName;
             this.password = password;
@@ -62,27 +77,50 @@ public class JavaService extends Observable{
             this.id = id;
         }
 
+        /**
+         *
+         * @return String name of the user
+         */
         public String getUserName() {
             return userName;
         }
 
+        /**
+         *
+         * @return String password of the user
+         */
         public String getPassword() {
             return password;
         }
 
+        /**
+         *
+         * @return int the amount of meals the user has
+         */
         public int getMealCount() {
             return mealCount;
         }
 
+        /**
+         *
+         * @return int id of the user
+         */
         public int getId() {
             return id;
         }
 
+        /**
+         * This is for updating the meal count
+         * @param mealCount the new mealCount integer
+         */
         public void setMealCount(int mealCount) {
             this.mealCount = mealCount;
         }
     }
 
+    /**
+     * This poll class is used for retrofit to make new polls
+     */
     public static class Poll {
         private int id = 0;
         private String question = "";
@@ -92,8 +130,20 @@ public class JavaService extends Observable{
         private String option3 = "";
         private String option4 = "";
 
+        /**
+         * empty class constructor
+         */
         public Poll(){}
 
+        /**
+         * Make a new Poll
+         * @param id of the new user
+         * @param question String of the question the user is asking
+         * @param option1 boolean true if user selected
+         * @param option2 boolean true if user selected
+         * @param option3 boolean true if user selected
+         * @param option4 boolean true if user selected
+         */
         public Poll(int id, String question, String option1, String option2, String option3, String option4) {
             this.id = id;
             this.question = question;
@@ -103,20 +153,70 @@ public class JavaService extends Observable{
             this.option4 = option4;
         }
 
+        /**
+         *
+         * @return int id of the user
+         */
         public int getId() { return id; }
 
+        /**
+         *
+         * @return question of the user
+         */
         public String getQuestion() { return question; }
+
+        /**
+         *
+         * @return String of option 1
+         */
         public String getOption1() { return option1; }
+
+        /**
+         *
+         * @return String of option 2
+         */
         public String getOption2() { return option2; }
+
+        /**
+         *
+         * @return String of option 3
+         */
         public String getOption3() { return option3; }
+
+        /**
+         *
+         * @return String of option 4
+         */
         public String getOption4() { return option4; }
+
+        /**
+         *
+         * @param value String of option1
+         */
         public void setOption1(String value) { option1 = value; }
+
+        /**
+         *
+         * @param value String of option2
+         */
         public void setOption2(String value) { option2 = value; }
+
+        /**
+         *
+         * @param value String of option3
+         */
         public void setOption3(String value) { option3 = value; }
+
+        /**
+         *
+         * @param value String of option4
+         */
         public void setOption4(String value) { option4 = value; }
     }
 
-
+    /**
+     * This PollResponse is used by retrofit to send a poll response to the server
+     */
     private static class PollResponse {
         private int pollID, personID;
         private boolean answer1, answer2, answer3, answer4;
@@ -131,6 +231,9 @@ public class JavaService extends Observable{
         }
     }
 
+    /**
+     * Retrofit interface for communicating with the server.
+     */
     private interface InterfaceService {
         @GET("user/{user}")
         Call<User> user(@Path("user") String username);
@@ -151,6 +254,10 @@ public class JavaService extends Observable{
         Call<Void> postPoll(@Body PollResponse response);
     }
 
+    /**
+     * Sends a put request to the server to update the mealCount
+     * @param mealCount integer that shows how many meals a user has left
+     */
     public void setMeal(int mealCount) {
         if (user != null) {
             service.setMeal(user.getId(), mealCount).enqueue(new Callback<Integer>() {
@@ -172,10 +279,18 @@ public class JavaService extends Observable{
         }
     }
 
+    /**
+     *
+     * @return User the user that the server returns.
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     *
+     * @return Poll
+     */
     public Poll getCommonsPoll() { return commonsPoll; }
 
     public Poll getKnollPoll() { return knollPoll; }
@@ -264,6 +379,11 @@ public class JavaService extends Observable{
         }
     }
 
+    /**
+     * Stores the username and password into the preferences so other parts of the app can use the logged in user
+     * @param username username of the user that is logged in
+     * @param password password of the user that is logged in
+     */
     public void setLogin(String username, String password) {
         this.username = username;
         this.password = password;
@@ -276,6 +396,11 @@ public class JavaService extends Observable{
         editor.commit();
     }
 
+    /**
+     * Makes a new user if the user presses sign in and the username has not already been used.
+     * @param username username of the new user
+     * @param password password of the new user
+     */
     public void createUser(final String username, final String password) {
         service.createUser(new User(username, password, -1, 1)).enqueue(new Callback<User>() {
             @Override
@@ -293,6 +418,14 @@ public class JavaService extends Observable{
         });
     }
 
+    /**
+     * This sends poll responses and runs check to update the percentages displayed on the vote page.
+     * @param poll Poll that the user is submitting to
+     * @param answer1 boolean for option 1
+     * @param answer2 boolean for option 2
+     * @param answer3 boolean for option 3
+     * @param answer4 boolean for option 4
+     */
     public void submitPollResponse(Poll poll, boolean answer1, boolean answer2, boolean answer3, boolean answer4) {
         PollResponse myResponse = new PollResponse(poll.getId(), user.getId(), answer1, answer2, answer3, answer4);
         service.postPoll(myResponse).enqueue(new Callback<Void>() {

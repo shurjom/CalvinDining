@@ -23,9 +23,12 @@ import edu.calvin.kpb23students.calvindining.R;
 
 
 /**
+ * This fragments allows votings
  * <p>
- *     This fragment allows you to vote
+ *     Voting uses the javaService for voting and has two polls. commonsPoll and knollPoll. These are the two things people can vote on.
  * </p>
+ * @author Kristofer Brink
+ * @version Fall, 2016
  */
 public class Vote extends Fragment {
     private JavaService javaService;
@@ -33,10 +36,23 @@ public class Vote extends Fragment {
     JavaService.Poll commonsPoll;
     JavaService.Poll knollPoll;
 
+    /**
+     * required empty public constructor
+     */
     public Vote() {
         // Required empty public constructor
     }
 
+    /**
+     * when view is created this makes everything funtion.
+     * <p>
+     *     When the view is created the buttons, raidobuttons have to responed to the user and give information the the javaService in order to update the polls.
+     * </p>
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,6 +97,9 @@ public class Vote extends Fragment {
             }
         });
 
+        /**
+         * This handles when things change from the server.
+         */
         javaServiceObserver = new Observer() {
             @Override
             public void update(Observable o, Object arg) {
@@ -127,6 +146,9 @@ public class Vote extends Fragment {
     }
 
 
+    /**
+     * the javaServiceObserver must be destroyed.
+     */
     @Override
     public void onDestroy() {
         javaService.deleteObserver(javaServiceObserver);

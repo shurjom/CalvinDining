@@ -20,11 +20,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 
 /**
- * <p>
- * Handles getting information from the server
- * <p/>
+ * Handles getting the venues from the server
  *
- * @author Kristofer
+ * @author Kristofer Brink
  * @version Fall, 2016
  */
 public class CalvinDiningService extends Observable{
@@ -42,7 +40,11 @@ public class CalvinDiningService extends Observable{
         return venues;
     }
 
-
+    /**
+     * Used to get events from the venues
+     * @param venueName String of the venue
+     * @return List<Meal> of the events that comes from the venueName
+     */
     public List<Meal> getEvents(String venueName) {
         for (Venue venue : venues) {
             if (venueName.equals(venue.name)) {
@@ -52,14 +54,25 @@ public class CalvinDiningService extends Observable{
         return new ArrayList<Meal>();
     }
 
+    /**
+     * Used by retrofit for making the venues.
+     */
     public static class Venue {
         private String name;
         private List<Meal> events;
 
+        /**
+         *
+         * @return String the name of the venue
+         */
         public String getName() {
             return name;
         }
 
+        /**
+         *
+         * @return String the display name of a venue. This cuts out parts of the display name.
+         */
         public String getDisplayName() {
             String cutName = name;
             cutName = cutName.replaceAll("Dining Hall", "");
@@ -68,6 +81,9 @@ public class CalvinDiningService extends Observable{
         }
     }
 
+    /**
+     * Used by retrofit for making the meals which is used by the venues.
+     */
     public static class Meal {
 
         private String name;
@@ -97,11 +113,17 @@ public class CalvinDiningService extends Observable{
         }
     }
 
+    /**
+     * Retrofite interface for getting venues
+     */
     private interface InterfaceService {
         @GET("venues") // TODO make this venues on server and here
         Call<List<Venue>> venues();
     }
 
+    /**
+     * gets data from server
+     */
     public void check() {
         service.venues().enqueue(new Callback<List<Venue>>() {
             @Override

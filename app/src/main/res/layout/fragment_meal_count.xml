@@ -8,15 +8,6 @@
     <!-- TODO: Update blank fragment layout -->
 
     <Button
-        android:text="Add Meal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addMeal"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/subtractMeal"
-        android:layout_alignEnd="@+id/subtractMeal" />
-
-    <Button
         android:text="Subtract Meal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -85,5 +76,15 @@
         android:textColor="@android:color/black"
         android:textStyle="normal|bold"
         android:textSize="17sp" />
+
+    <Button
+        android:text="Add Meal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addMeal"
+        android:layout_above="@+id/subtractMeal"
+        android:layout_alignStart="@+id/subtractMeal"
+        android:layout_marginBottom="51dp"
+        android:layout_alignEnd="@+id/subtractMeal" />
 
 </RelativeLayout>

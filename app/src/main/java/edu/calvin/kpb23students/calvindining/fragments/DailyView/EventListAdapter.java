@@ -26,10 +26,10 @@ import edu.calvin.kpb23students.calvindining.R;
 
 /**
  * <p>
- * Handles displaying data given to display.
+ *  Handles displaying data given to display.
  * <p/>
  *
- * @author Kristofer
+ * @author Kristofer Brink
  * @version Fall, 2016
  */
 public class EventListAdapter extends EventListObserver {
@@ -88,6 +88,9 @@ public class EventListAdapter extends EventListObserver {
         };
     }
 
+    /**
+     * handles first Observer
+     */
     @Override
     protected void gainedFirstDataSetObserver() {
         diningService.addObserver(diningServiceObserver);
@@ -97,11 +100,17 @@ public class EventListAdapter extends EventListObserver {
         diningServiceObserver.update(null, null);
     }
 
+    /**
+     * handles when all observers have been lost
+     */
     @Override
     protected void lostLastDataSetObserver() {
         diningService.deleteObserver(diningServiceObserver);
     }
 
+    /**
+     * use information from the server to set the events and convert things to Strings properly
+     */
     private void setEvents() {
         final List<CalvinDiningService.Meal> meals = diningService.getEvents(diningVenueName);
         // http://stackoverflow.com/a/21862750/2948122
@@ -184,14 +193,16 @@ public class EventListAdapter extends EventListObserver {
 
 
     /**
+     * gets the size of the display Items
      * @return count
      */
     @Override
     public int getCount() {
         return this.displayItems.size();
     }
+
     /**
-     *
+     * gets an item from the displayItems
      * @param position
      * @return item
      */
@@ -202,7 +213,7 @@ public class EventListAdapter extends EventListObserver {
 
     /**
      * @param position position of item
-     * @return id
+     * @return id long identification of the item
      */
     @Override
     public long getItemId(int position) {
@@ -214,7 +225,7 @@ public class EventListAdapter extends EventListObserver {
      * @param position position of displayItem
      * @param convertView handle view
      * @param parent
-     * @return timeLabel
+     * @return View of the labels
      */
     @NonNull
     @Override

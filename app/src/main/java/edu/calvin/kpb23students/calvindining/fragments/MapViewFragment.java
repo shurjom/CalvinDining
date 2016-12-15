@@ -37,8 +37,14 @@ import com.google.maps.android.ui.IconGenerator;
 import edu.calvin.kpb23students.calvindining.R;
 
 
-
-
+/**
+ ** This uses google maps to display locations of food places at Calvin
+ * <p>
+ *     This uses google maps and an Icon generator to display locations from the google map view without having to click on the locations.
+ * </p>
+ * @author Kristofer Brink
+ * @version Fall, 2016
+ */
 public class MapViewFragment extends Fragment
         implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -52,6 +58,13 @@ public class MapViewFragment extends Fragment
     Location mLastLocation;
     Marker mCurrLocationMarker;
 
+    /**
+     * when the view is created this makes google maps work
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -76,32 +89,46 @@ public class MapViewFragment extends Fragment
         return v;
     }
 
+    /**
+     * handles when resumed
+     */
     @Override
     public void onResume() {
         super.onResume();
         mMapView.onResume();
     }
 
+    /**
+     * handles on pause
+     */
     @Override
     public void onPause() {
         super.onPause();
         mMapView.onPause();
     }
 
+    /**
+     * handles on destroy
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
         mMapView.onDestroy();
     }
 
+    /**
+     * handles on low memory
+     */
     @Override
     public void onLowMemory() {
         super.onLowMemory();
         mMapView.onLowMemory();
     }
 
-
-
+    /**
+     * When the map is ready this displays the locations and moves the map to look at Calvin college.
+     * @param map
+     */
     @Override
     public void onMapReady(GoogleMap map) {
 
@@ -122,6 +149,12 @@ public class MapViewFragment extends Fragment
         makeMarker(map, "Knight Way Cafe", new LatLng(42.933223, -85.589551));
     }
 
+    /**
+     * makes the markers
+     * @param map GoogleMap to make the marker on
+     * @param title String of the title of the marker
+     * @param position LatLng position to place the marker
+     */
     private void makeMarker(GoogleMap map, String title, LatLng position) {
         TextView text = new TextView(getContext());
         text.setTextColor(Color.parseColor(("#ffffff")));
@@ -134,21 +167,37 @@ public class MapViewFragment extends Fragment
         map.addMarker(tp);
     }
 
+    /**
+     *
+     * @param bundle
+     */
     @Override
     public void onConnected(@Nullable Bundle bundle) {
 
     }
 
+    /**
+     *
+     * @param i
+     */
     @Override
     public void onConnectionSuspended(int i) {
 
     }
 
+    /**
+     *
+     * @param connectionResult
+     */
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 
+    /**
+     *
+     * @param location
+     */
     @Override
     public void onLocationChanged(Location location) {
 

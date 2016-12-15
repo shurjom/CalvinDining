@@ -35,7 +35,7 @@ import edu.calvin.kpb23students.calvindining.R;
  *  This handles changing between different daily views
  * <p/>
  *
- * @author Kristofer
+ * @author Kristofer Brink
  * @version Fall, 2016
  */
 public class DailyViewTabber extends Fragment {
@@ -55,6 +55,9 @@ public class DailyViewTabber extends Fragment {
         return view;
     }
 
+    /**
+     * handles when the view is changed
+     */
     private class MyPagerAdapter extends ObservingFragmentPagerAdapter {
         private List<CalvinDiningService.Venue> venues;
         final private CalvinDiningService diningService;
@@ -72,6 +75,9 @@ public class DailyViewTabber extends Fragment {
             };
         }
 
+        /**
+         * handles when first Observer is gained
+         */
         @Override
         protected void gainedFirstDataSetObserver() {
             diningService.addObserver(diningServiceObserver);
@@ -81,21 +87,38 @@ public class DailyViewTabber extends Fragment {
             diningServiceObserver.update(null, null);
         }
 
+        /**
+         * handles losing last observer
+         */
         @Override
         protected void lostLastDataSetObserver() {
             diningService.deleteObserver(diningServiceObserver);
         }
 
+        /**
+         * handles geting an item at position
+         * @param pos int position of item
+         * @return Fragment of the venue.
+         */
         @Override
         public Fragment getItem(int pos) {
             return DailyView.newInstance(venues.get(pos).getName());
         }
 
+        /**
+         * handles getting the number of venues
+         * @return int number of venues
+         */
         @Override
         public int getCount() {
             return venues.size();
         }
 
+        /**
+         * handles getting the page titles
+         * @param pos postion to get the title from
+         * @return CharSequence of the title
+         */
         @Override
         public CharSequence getPageTitle(int pos) {
             Log.v("x", "venues:" + venues.get(pos).getDisplayName());

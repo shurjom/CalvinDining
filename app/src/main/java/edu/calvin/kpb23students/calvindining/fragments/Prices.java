@@ -15,17 +15,32 @@ import edu.calvin.kpb23students.calvindining.R;
 
 
 /**
+ * This fragment shows prices for guests and students
  * <p>
- *     This fragment shows prices for guests and students
+ *      This shows prices for guests, children, and it links user to the different meal plans.
  * </p>
+ * @author Kristofer Brink
+ * @version Fall, 2016
  */
 public class Prices extends Fragment {
+    /**
+     * Required empty constructor
+     */
     public Prices() {
         // Required empty public constructor
     }
-    // Required empty public constructor
 
 
+    /**
+     * Sets up links to the buttons at the bottom of the page.
+     * <p>
+     *     The links link the user to important pages on Calvin's website. It links to meal plans for on-campus and off campus students.
+     * </p>
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,6 +69,10 @@ public class Prices extends Fragment {
         return linearLayout;
     }
 
+    /**
+     * Directs a user to a link given by the app.
+     * @param link String of the link that the app will send the user to
+     */
     private void openLink(String link) {
         // http://stackoverflow.com/a/4930319/2948122
         Uri uri = Uri.parse(link); // missing 'http://' will cause crashed

@@ -11,15 +11,26 @@ import android.view.ViewGroup;
 import edu.calvin.kpb23students.calvindining.R;
 
 /**
- * <p>
- *     This fragment shows hours
- * </p>
+ * This fragment shows hours
+ *
+ * @author Kristofer Brink
+ * @version Fall, 2016
  */
 public class Hours extends Fragment {
+    /**
+     * Required empty public constructor
+     */
     public Hours() {
         // Required empty public constructor
     }
 
+    /**
+     * This ties the layout of fragment_hours to this fragment.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -5,16 +5,25 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 /**
- * Created by Kristofer on 2016-11-06.
+ * Handles Observers
+ * @author Kristofer Brink
+ * @version Fall, 2016
  */
-
 public abstract class ObservingFragmentPagerAdapter extends FragmentPagerAdapter {
     private int observerCount;
 
+    /**
+     *
+     * @param fm
+     */
     public ObservingFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
+    /**
+     *
+     * @param observer
+     */
     @Override
     public void registerDataSetObserver(DataSetObserver observer) {
         super.registerDataSetObserver(observer);
@@ -24,6 +33,10 @@ public abstract class ObservingFragmentPagerAdapter extends FragmentPagerAdapter
         }
     }
 
+    /**
+     *
+     * @param observer
+     */
     @Override
     public void unregisterDataSetObserver(DataSetObserver observer) {
         super.unregisterDataSetObserver(observer);
@@ -35,7 +48,13 @@ public abstract class ObservingFragmentPagerAdapter extends FragmentPagerAdapter
         }
     }
 
+    /**
+     * factory method to be overridden
+     */
     protected void gainedFirstDataSetObserver() {} // to be overridden
 
+    /**
+     * facotry method to be overridden
+     */
     protected void lostLastDataSetObserver() {} // to be overridden
 }
