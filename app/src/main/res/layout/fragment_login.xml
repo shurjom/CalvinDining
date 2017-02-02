@@ -79,5 +79,15 @@
             android:layout_alignEnd="@+id/login"
             android:layout_alignStart="@+id/login"
             android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="Please don't use your real password."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/displayUserName"
+            android:layout_marginTop="35dp"
+            android:id="@+id/textView2" />
+
     </RelativeLayout>
 </FrameLayout>
